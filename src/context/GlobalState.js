@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from 'react'
 import AppReducer from './AppReducer'
 
+//alt store is set if user picks store other than default
+
 //Init state
 const initialState = {
   store: [
@@ -31,7 +33,7 @@ const initialState = {
       description: 'chicken embryo',
       aisle: 'eggs',
       defaultStore: 'Costco',
-      altStore: 'Winco',
+      altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
     },
@@ -40,7 +42,7 @@ const initialState = {
       description: 'flesh of animals',
       aisle: 'meat',
       defaultStore: 'Costco',
-      altStore: 'Winco',
+      altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
     },
@@ -58,7 +60,7 @@ const initialState = {
       description: 'little lettuce cabbage heads',
       aisle: 'produce',
       defaultStore: 'Harmons',
-      altStore: 'Winco',
+      altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
     },
