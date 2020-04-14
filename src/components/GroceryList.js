@@ -10,12 +10,11 @@ import StoreList from './StoreList'
 function GroceryList() {
   const { store, groceryItem } = useContext(GlobalContext)
   const [glist, setGlist] = useState([])
+  const [glist2, setGlist2] = useState([])
 
   useEffect(() => {
     store.filter(listByStore)
   }, [])
-
-  const mylist = []
 
   const listByStore = (store, i) => {
     const list = groceryItem.filter(
@@ -42,16 +41,11 @@ function GroceryList() {
       </div>
     )
 
-    // let div3 = (
-    //   <StoreList name={store.storeName} list={list} />
-    // )
-
+    let div3 = <StoreList name={store.storeName} list={list} />
+    setGlist2((prev) => [...prev, div3])
     setGlist((prev) => [...prev, div2])
   }
 
-  // const addToDom = (store, list) => {
-  //   setGlist((prev) => [...prev, <StoreList name={store} list={list} />])
-  // }
   let div = (
     <div>
       <h4>{store.storeName}</h4>
@@ -69,27 +63,9 @@ function GroceryList() {
   return (
     <div className="container">
       <h3>grocery list</h3>
-      {glist}
-      {/* {div2} */}
+      {glist2}
     </div>
   )
 }
 
 export default GroceryList
-
-{
-  /*}
-<div>
-{/* <h4>{name}</h4> */
-}
-{
-  /* <ul className="list">
-  {groceryItem.map((item) => (
-    <li key={item.itemName}>
-      {item.itemName} <span>{item.aisle} </span>
-      <button className="delete-btn">x</button>
-    </li>
-  ))}
-</ul>
-</div> */
-}
