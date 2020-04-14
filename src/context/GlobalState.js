@@ -10,21 +10,25 @@ const initialState = {
       storeName: 'Harmons',
       description: '',
       location: '',
+      id: 1,
     },
     {
       storeName: 'Costco',
       description: '',
       location: '',
+      id: 2,
     },
     {
       storeName: 'Winco',
       description: '',
       location: '',
+      id: 3,
     },
     {
       storeName: 'Any',
       description: '',
       location: '',
+      id: 4,
     },
   ],
   groceryItem: [
@@ -36,6 +40,7 @@ const initialState = {
       altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
+      id: 1,
     },
     {
       itemName: 'meat',
@@ -45,6 +50,7 @@ const initialState = {
       altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
+      id: 2,
     },
     {
       itemName: 'half -n- half',
@@ -54,6 +60,7 @@ const initialState = {
       altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
+      id: 3,
     },
     {
       itemName: 'brussel sprouts',
@@ -63,6 +70,7 @@ const initialState = {
       altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
+      id: 4,
     },
     {
       itemName: 'cat food',
@@ -72,6 +80,7 @@ const initialState = {
       altStore: '',
       expectedFrequency: '',
       observedFrequency: '',
+      id: 5,
     },
   ],
 }
