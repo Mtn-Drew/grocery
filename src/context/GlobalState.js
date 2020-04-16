@@ -91,9 +91,30 @@ export const GlobalContext = createContext(initialState)
 //Provider component
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
+
+  // Actions
+  function deleteItemFromList(id) {
+    dispatch({
+      type: 'DELETE_ITEM_FROM_LIST',
+      payload: id,
+    })
+  }
+
+  function addItemToList(item) {
+    dispatch({
+      type: 'ADD_ITEM_TO_LIST',
+      payload: item,
+    })
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ store: state.store, groceryItem: state.groceryItem }}
+      value={{
+        store: state.store,
+        groceryItem: state.groceryItem,
+        deleteItemFromList,
+        addItemToList,
+      }}
     >
       {children}
     </GlobalContext.Provider>

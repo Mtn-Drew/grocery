@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/GlobalState'
 import StoreList from './StoreList'
 
 function GroceryList() {
-  const { store, groceryItem } = useContext(GlobalContext)
+  const { store, groceryItem, deleteItemFromList } = useContext(GlobalContext)
   const [displayedList, setDisplayedList] = useState([])
 
   useEffect(() => {
@@ -15,8 +15,18 @@ function GroceryList() {
     const list = groceryItem.filter(
       (item) => item.defaultStore === store.storeName
     )
-    let newListItem = <StoreList name={store.storeName} list={list} key={i} />
+    let newListItem = (
+      <StoreList
+        name={store.storeName}
+        list={list}
+        key={i}
+        // delete={deleteItemFromList}
+      />
+    )
+
     setDisplayedList((prev) => [...prev, newListItem])
+
+    //still need to sort by aisle
   }
 
   return (

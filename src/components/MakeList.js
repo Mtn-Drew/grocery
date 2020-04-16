@@ -10,10 +10,14 @@ function MakeList() {
   const [newItemStore, setNewItemStore] = useState('')
   const [newItemFrequency, setNewItemFrequency] = useState('')
 
+  const addToList = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div>
-      <h3>Add item</h3>
-      <form>
+      <h3>Add item to list</h3>
+      <form onSubmit={addToList}>
         <div className="form-control">
           <label htmlFor="text">Search or Add New Item</label>
           <input
@@ -23,9 +27,7 @@ function MakeList() {
             onChange={(e) => setNewItemName(e.target.value)}
           />
         </div>
-        <button>
-          Eggs <span>eggs </span>
-        </button>
+        <input type="text" value={newItemName} onChange={() => {}} />
 
         <button className="btn">Add To Grocery List</button>
       </form>
