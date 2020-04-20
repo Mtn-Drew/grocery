@@ -12,8 +12,13 @@ function GroceryList() {
     store.filter(listByStore)
   }, [groceryItem])
 
+  const sortedGroceries = groceryItem.sort((a, b) =>
+    a.aisle > b.aisle ? 1 : -1
+  )
+
   const listByStore = (store, i) => {
-    const list = groceryItem.filter(
+    // const list = groceryItem.filter(
+    const list = sortedGroceries.filter(
       (item) => item.defaultStore === store.storeName
     )
 
@@ -30,7 +35,6 @@ function GroceryList() {
     }
 
     //still need to sort by aisle
-    //still need to filter out stores with no items
   }
 
   return (
