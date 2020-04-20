@@ -8,11 +8,6 @@ function GroceryList() {
   const [displayedList, setDisplayedList] = useState([])
 
   useEffect(() => {
-    store.filter(listByStore)
-  }, [])
-
-  useEffect(() => {
-    console.log('groceryItem has changed')
     setDisplayedList([])
     store.filter(listByStore)
   }, [groceryItem])
@@ -21,16 +16,18 @@ function GroceryList() {
     const list = groceryItem.filter(
       (item) => item.defaultStore === store.storeName
     )
-    let newListItem = (
-      <StoreList
-        name={store.storeName}
-        list={list}
-        key={i}
-        // delete={deleteItemFromList}
-      />
-    )
 
-    setDisplayedList((prev) => [...prev, newListItem])
+    if (list.length !== 0) {
+      let newListItem = (
+        <StoreList
+          name={store.storeName}
+          list={list}
+          key={i}
+          // delete={deleteItemFromList}
+        />
+      )
+      setDisplayedList((prev) => [...prev, newListItem])
+    }
 
     //still need to sort by aisle
     //still need to filter out stores with no items
