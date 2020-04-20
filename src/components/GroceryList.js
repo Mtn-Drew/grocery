@@ -13,6 +13,8 @@ function GroceryList() {
 
   useEffect(() => {
     console.log('groceryItem has changed')
+    setDisplayedList([])
+    store.filter(listByStore)
   }, [groceryItem])
 
   const listByStore = (store, i) => {
@@ -31,6 +33,7 @@ function GroceryList() {
     setDisplayedList((prev) => [...prev, newListItem])
 
     //still need to sort by aisle
+    //still need to filter out stores with no items
   }
 
   return (
