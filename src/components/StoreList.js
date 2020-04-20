@@ -6,7 +6,8 @@ function StoreList(props) {
 
   const testFn = (item) => {
     deleteItemFromList(item.id)
-    console.log('testFN ->', item)
+    console.log('testFN ->', item.id)
+    console.log('gi->', groceryItem)
   }
 
   return (

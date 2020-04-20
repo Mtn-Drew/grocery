@@ -11,6 +11,10 @@ function GroceryList() {
     store.filter(listByStore)
   }, [])
 
+  useEffect(() => {
+    console.log('groceryItem has changed')
+  }, [groceryItem])
+
   const listByStore = (store, i) => {
     const list = groceryItem.filter(
       (item) => item.defaultStore === store.storeName
