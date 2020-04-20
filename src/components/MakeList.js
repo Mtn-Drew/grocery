@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 function MakeList() {
   const [newItemName, setNewItemName] = useState('')
   const [newItemDescription, setNewItemDescription] = useState('')
+  const [newItemAisle, setNewItemAisle] = useState('')
   const [newItemStore, setNewItemStore] = useState('')
   const [newItemFrequency, setNewItemFrequency] = useState('')
 
@@ -22,12 +23,45 @@ function MakeList() {
           <label htmlFor="text">Search or Add New Item</label>
           <input
             type="text"
-            placeholder="Enter text..."
+            placeholder="grocery item name"
             value={newItemName}
             onChange={(e) => setNewItemName(e.target.value)}
           />
         </div>
-        <input type="text" value={newItemName} onChange={() => {}} />
+        {/* <input type="text" value={newItemName} onChange={() => {}} /> */}
+
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="description"
+            value={newItemDescription}
+            onChange={(e) => setNewItemName(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="aisle"
+            value={newItemAisle}
+            onChange={(e) => setNewItemName(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="store"
+            value={newItemStore}
+            onChange={(e) => setNewItemName(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="frequency"
+            value={newItemFrequency}
+            onChange={(e) => setNewItemName(e.target.value)}
+          />
+        </div>
 
         <button className="btn">Add To Grocery List</button>
       </form>
