@@ -1,18 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState'
 
 // under input, display the closest search result to what has been typed so far.  When you click on search result,  you select that item.  You can then click to add to list, or click edit
 //when found in search, it lists default values (aisle, store, frequency)
 //when you click edit, you can change values for aisle, store, frequency
 
 function MakeList() {
+  const { addItemToList } = useContext(GlobalContext)
   const [newItemName, setNewItemName] = useState('')
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
   const [newItemStore, setNewItemStore] = useState('')
   const [newItemFrequency, setNewItemFrequency] = useState('')
 
+  const resetForm = () => {}
+
   const addToList = (e) => {
     e.preventDefault()
+
+    const newItem = {
+      id: Math.floor(Math.random() * 1000000),
+      itemName: newItemName,
+      description: newItemDescription,
+      aisle: newItemAisle,
+      defaultStore: newItemStore,
+      expectedFrequency: newItemFrequency,
+    }
+
+    addItemToList(newItem)
+    resetForm()
   }
 
   return (
@@ -35,7 +51,7 @@ function MakeList() {
             type="text"
             placeholder="description"
             value={newItemDescription}
-            onChange={(e) => setNewItemName(e.target.value)}
+            onChange={(e) => setNewItemDescription(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -43,7 +59,7 @@ function MakeList() {
             type="text"
             placeholder="aisle"
             value={newItemAisle}
-            onChange={(e) => setNewItemName(e.target.value)}
+            onChange={(e) => setNewItemAisle(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -51,7 +67,7 @@ function MakeList() {
             type="text"
             placeholder="store"
             value={newItemStore}
-            onChange={(e) => setNewItemName(e.target.value)}
+            onChange={(e) => setNewItemStore(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -59,7 +75,7 @@ function MakeList() {
             type="text"
             placeholder="frequency"
             value={newItemFrequency}
-            onChange={(e) => setNewItemName(e.target.value)}
+            onChange={(e) => setNewItemFrequency(e.target.value)}
           />
         </div>
 

@@ -28,21 +28,6 @@ function GroceryList() {
     store.filter(listByStore)
   }, [groceryItem, store])
 
-  // const sortedGroceries = groceryItem.sort((a, b) =>
-  //   a.aisle > b.aisle ? 1 : -1
-  // )
-
-  // const listByStore = (store, i) => {
-  //   const list = sortedGroceries.filter(
-  //     (item) => item.defaultStore === store.storeName
-  //   )
-
-  //   if (list.length !== 0) {
-  //     let newListItem = <StoreList name={store.storeName} list={list} key={i} />
-  //     setDisplayedList((prev) => [...prev, newListItem])
-  //   }
-  // }
-
   return (
     <div className="container">
       <h3>grocery list</h3>
