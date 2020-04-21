@@ -41,6 +41,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 1,
+      checked: false,
     },
     {
       itemName: 'meat',
@@ -51,6 +52,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 2,
+      checked: false,
     },
     {
       itemName: 'half -n- half',
@@ -61,6 +63,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 3,
+      checked: false,
     },
     {
       itemName: 'brussel sprouts',
@@ -71,6 +74,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 4,
+      checked: false,
     },
     {
       itemName: 'cat food',
@@ -81,6 +85,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 5,
+      checked: false,
     },
     {
       itemName: 'broccoli',
@@ -91,6 +96,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 6,
+      checked: false,
     },
     {
       itemName: 'craft beer',
@@ -101,6 +107,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 7,
+      checked: false,
     },
     {
       itemName: 'apples',
@@ -111,6 +118,7 @@ const initialState = {
       expectedFrequency: '',
       observedFrequency: '',
       id: 8,
+      checked: false,
     },
   ],
 }
@@ -137,6 +145,13 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  function toggleChecked(item) {
+    dispatch({
+      type: 'TOGGLE_CHECKED',
+      payload: item,
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -144,6 +159,7 @@ export const GlobalProvider = ({ children }) => {
         groceryItem: state.groceryItem,
         deleteItemFromList,
         addItemToList,
+        toggleChecked,
       }}
     >
       {children}

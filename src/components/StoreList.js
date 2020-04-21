@@ -2,22 +2,23 @@ import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
 function StoreList(props) {
-  const { groceryItem, deleteItemFromList } = useContext(GlobalContext)
-
-  const testFn = (item) => {
-    deleteItemFromList(item.id)
-    console.log('testFN ->', item.id)
-    console.log('gi->', groceryItem)
-  }
+  const { toggleChecked, deleteItemFromList } = useContext(GlobalContext)
 
   return (
     <div>
       <h4>{props.name}</h4>
       <ul className="list">
         {props.list.map((item) => (
-          <li key={item.itemName}>
+          <li
+            key={item.itemName}
+            style={{ textDecoration: item.checked ? 'line-through' : '' }}
+            onClick={() => toggleChecked(item)}
+          >
             {item.itemName} <span>{item.aisle} </span>
-            <button className="delete-btn" onClick={() => testFn(item)}>
+            <button
+              className="delete-btn"
+              onClick={() => deleteItemFromList(item.id)}
+            >
               X
             </button>
           </li>
