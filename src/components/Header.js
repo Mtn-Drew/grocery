@@ -1,5 +1,7 @@
 import React from 'react'
 
+// in menu, options to- edit default stores, add stores, edit item defaults, look at frequencies
+
 function Header() {
   return (
     <div className="container">
