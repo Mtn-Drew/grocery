@@ -12,14 +12,18 @@ function StoreList(props) {
           <li
             key={item.itemName}
             style={{ textDecoration: item.checked ? 'line-through' : '' }}
-            onClick={() => toggleChecked(item)}
+            // onClick={() => toggleChecked(item)}
           >
-            {item.itemName} <span>{item.aisle} </span>
             <button
               className="delete-btn"
+              style={{ textDecoration: '' }}
               onClick={() => deleteItemFromList(item.id)}
             >
               X
+            </button>
+            {item.itemName} <span> {item.aisle} </span>
+            <button className="check-btn" onClick={() => toggleChecked(item)}>
+              ✓
             </button>
           </li>
         ))}

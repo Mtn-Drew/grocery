@@ -4,16 +4,18 @@ export default (state, action) => {
       const tempArrDelete = state.groceryItem.filter(
         (item) => item.id !== action.payload
       )
-
       return {
         ...state,
         groceryItem: tempArrDelete,
       }
+
     case 'ADD_ITEM_TO_LIST':
+      console.log('in add item -', action.payload)
       return {
         ...state,
         groceryItem: [action.payload, ...state.groceryItem],
       }
+
     case 'TOGGLE_CHECKED':
       const tempArrChecked = state.groceryItem.map((item) => {
         if (item.id === action.payload.id) {
@@ -22,14 +24,12 @@ export default (state, action) => {
         } else {
           return item
         }
-        // console.log('id matched')
       })
-      console.log('tempArrChecked ->', tempArrChecked)
-
       return {
         ...state,
         groceryItem: tempArrChecked,
       }
+
     default:
       return state
   }
