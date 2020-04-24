@@ -34,6 +34,7 @@ function MakeList() {
     }
 
     //check newItemStore against store values in context and set to 'any/other' if it doesn't match
+    //add option to add store??
     const testArr = store.filter((s) => s === newItem.defaultStore)
     console.log('testArr ->', testArr)
     if (testArr.length === 0) {
