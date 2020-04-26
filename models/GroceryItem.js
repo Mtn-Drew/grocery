@@ -13,7 +13,7 @@ const GroceryItemSchema = new mongoose.Schema({
   aisle: {
     type: String,
     trim: true,
-    required: [true, 'Please add some text'],
+    required: [true, 'Please add in store location'],
   },
   defaultStore: {
     type: String,
