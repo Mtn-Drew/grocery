@@ -4,9 +4,13 @@ import { GlobalContext } from '../context/GlobalState'
 import StoreList from './StoreList'
 
 function GroceryList() {
-  const { store, groceryItem } = useContext(GlobalContext)
+  const { store, groceryItem, getGroceryItems } = useContext(GlobalContext)
 
   const [displayedList, setDisplayedList] = useState([])
+
+  useEffect(() => {
+    getGroceryItems()
+  }, [])
 
   useEffect(() => {
     const listByStore = (store, i) => {
