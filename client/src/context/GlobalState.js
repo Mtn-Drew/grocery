@@ -168,18 +168,42 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  function deleteItemFromList(id) {
-    dispatch({
-      type: 'DELETE_ITEM_FROM_LIST',
-      payload: id,
-    })
+  async function deleteItemFromList(id) {
+    try {
+      await axios.delete(`/api/v1/groceryItems/${id}`)
+
+      dispatch({
+        type: 'DELETE_ITEM_FROM_LIST',
+        payload: id,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
   }
 
-  function addItemToList(item) {
-    dispatch({
-      type: 'ADD_ITEM_TO_LIST',
-      payload: item,
-    })
+  async function addItemToList(item) {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    try {
+      const res = await axios.post('/api/v1/groceryItems', item, config)
+
+      dispatch({
+        type: 'ADD_ITEM_TO_LIST',
+        payload: res.data.data,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
   }
 
   function toggleChecked(item) {
