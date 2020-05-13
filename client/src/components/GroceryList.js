@@ -10,6 +10,7 @@ function GroceryList() {
 
   useEffect(() => {
     getGroceryItems()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
