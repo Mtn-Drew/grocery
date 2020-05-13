@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const GroceryItemSchema = new mongoose.Schema({
   itemName: {
     type: String,
+    lowercase: true,
     trim: true,
     required: [true, 'Please add some text'],
   },
@@ -13,11 +14,12 @@ const GroceryItemSchema = new mongoose.Schema({
   aisle: {
     type: String,
     trim: true,
-    required: [true, 'Please add in store location'],
+    lowercase: true,
   },
   defaultStore: {
     type: String,
     trim: true,
+    uppercase: true,
   },
   altStore: {
     type: String,
