@@ -17,7 +17,7 @@ function StoreList(props) {
             <button
               className="delete-btn"
               style={{ textDecoration: '' }}
-              onClick={() => deleteItemFromList(item.id)}
+              onClick={() => deleteItemFromList(item._id)}
             >
               X
             </button>

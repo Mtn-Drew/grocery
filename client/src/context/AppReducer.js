@@ -2,7 +2,7 @@ export default (state, action) => {
   switch (action.type) {
     case 'DELETE_ITEM_FROM_LIST':
       const tempArrDelete = state.groceryItem.filter(
-        (item) => item.id !== action.payload
+        (item) => item._id !== action.payload
       )
       return {
         ...state,
@@ -13,7 +13,7 @@ export default (state, action) => {
       console.log('in add item -', action.payload)
       return {
         ...state,
-        groceryItem: [action.payload, ...state.groceryItem],
+        groceryItem: [...state.groceryItem, action.payload],
       }
 
     case 'TOGGLE_CHECKED':
