@@ -11,9 +11,11 @@ function GroceryList() {
   useEffect(() => {
     getGroceryItems()
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log('in UE getGroceryItems-groceryItem->', groceryItem)
   }, [])
 
   useEffect(() => {
+    console.log('in UE 2--')
     const listByStore = (store, i) => {
       const list = sortedGroceries.filter(
         (item) => item.defaultStore === store.storeName
