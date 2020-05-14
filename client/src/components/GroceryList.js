@@ -2,9 +2,12 @@ import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
 import StoreList from './StoreList'
+import Loader from './Loader'
 
 function GroceryList() {
-  const { store, groceryItem, getGroceryItems } = useContext(GlobalContext)
+  const { store, groceryItem, getGroceryItems, loading } = useContext(
+    GlobalContext
+  )
 
   const [displayedList, setDisplayedList] = useState([])
 
@@ -49,7 +52,7 @@ function GroceryList() {
     <div className="container">
       {console.log('groceryItem -', groceryItem)}
       <h3>grocery list</h3>
-      {displayedList}
+      {loading ? <Loader /> : displayedList}
     </div>
   )
 }
