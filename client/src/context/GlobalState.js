@@ -7,30 +7,30 @@ import axios from 'axios'
 //Init state
 const initialState = {
   store: [
-    {
-      storeName: 'HARMONS',
-      description: '',
-      location: '',
-      id: 1,
-    },
-    {
-      storeName: 'COSTCO',
-      description: '',
-      location: '',
-      id: 2,
-    },
-    {
-      storeName: 'WINCO',
-      description: '',
-      location: '',
-      id: 3,
-    },
-    {
-      storeName: 'ANY/OTHER',
-      description: '',
-      location: '',
-      id: 4,
-    },
+    // {
+    //   storeName: 'HARMONS',
+    //   description: '',
+    //   location: '',
+    //   id: 1,
+    // },
+    // {
+    //   storeName: 'COSTCO',
+    //   description: '',
+    //   location: '',
+    //   id: 2,
+    // },
+    // {
+    //   storeName: 'WINCO',
+    //   description: '',
+    //   location: '',
+    //   id: 3,
+    // },
+    // {
+    //   storeName: 'ANY/OTHER',
+    //   description: '',
+    //   location: '',
+    //   id: 4,
+    // },
   ],
   groceryItem: [
     // {
@@ -213,6 +213,60 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  async function getStores() {
+    try {
+      const res = await axios.get('/api/v1/groceryStores')
+
+      dispatch({
+        type: 'GET_STORES',
+        payload: res.data.data,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
+  async function deleteStore(id) {
+    try {
+      await axios.delete(`/api/v1/stores/${id}`)
+
+      dispatch({
+        type: 'DELETE_STORE',
+        payload: id,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
+  async function addStore(item) {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    try {
+      const res = await axios.post('/api/v1/stores', item, config)
+
+      dispatch({
+        type: 'ADD_STORE',
+        payload: res.data.data,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -222,6 +276,9 @@ export const GlobalProvider = ({ children }) => {
         addItemToList,
         toggleChecked,
         getGroceryItems,
+        getStores,
+        deleteStore,
+        addStore,
         transactions: state.transactions,
         error: state.error,
         loading: state.loading,

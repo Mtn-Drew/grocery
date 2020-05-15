@@ -37,6 +37,28 @@ export default (state, action) => {
         groceryItem: action.payload,
       }
 
+    case 'GET_STORES':
+      return {
+        ...state,
+        store: action.payload,
+      }
+
+    case 'ADD_STORE':
+      console.log('in add store -', action.payload)
+      return {
+        ...state,
+        store: [...state.store, action.payload],
+      }
+
+    case 'DELETE_STORE':
+      const storeArrDelete = state.store.filter(
+        (item) => item._id !== action.payload
+      )
+      return {
+        ...state,
+        store: storeArrDelete,
+      }
+
     //transactions
     case 'GET_TRANSACTIONS':
       return {
