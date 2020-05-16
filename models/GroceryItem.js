@@ -27,6 +27,9 @@ const GroceryItemSchema = new mongoose.Schema({
   },
   expectedFrequency: Number,
   observedFrequency: '',
+  lastPurchased: {
+    type: Date,
+  },
 })
 
 module.exports = mongoose.model('GroceryItem', GroceryItemSchema)

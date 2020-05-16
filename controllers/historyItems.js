@@ -1,16 +1,17 @@
-const GroceryItem = require('../models/GroceryItem')
+const HistoryItem = require('../models/HistoryItem')
 
-//@desc Get all groceryItems
-//@route GET /api/v1/groceryItems
+//@desc Get all history items
+//@route GET /api/v1/historyItems
 //@access Public
-exports.getGroceryItems = async (req, res, next) => {
-  try {
-    const groceryItems = await GroceryItem.find()
 
+exports.getHistoryItems = async (req, res, next) => {
+  try {
+    const historyItems = await HistoryItem.find()
+    console.log(`historyItems- ${historyItems}`.yellow)
     return res.status(200).json({
       success: true,
-      count: groceryItems.length,
-      data: groceryItems,
+      count: historyItems.length,
+      data: historyItems,
     })
   } catch (error) {
     return res.status(500).json({
@@ -20,24 +21,25 @@ exports.getGroceryItems = async (req, res, next) => {
   }
 }
 
-//@desc Add groceryItem
-//@route POST /api/v1/groceryItems
+//@desc Add history item
+//@route POST /api/v1/historyItems
 //@access Public
-exports.addGroceryItem = async (req, res, next) => {
+
+exports.addItemToHistory = async (req, res, next) => {
   try {
     const {
-      itemName,
-      description,
-      aisle,
-      defaultStore,
-      expectedFrequency,
+      groceryItemName,
+      storeName,
+      groceryItemDescription,
+      groceryItemAisle,
+      lastPurchased,
     } = req.body
 
-    const groceryItem = await GroceryItem.create(req.body)
+    const historyItem = await HistoryItem.create(req.body)
 
     return res.status(201).json({
       success: true,
-      data: groceryItem,
+      data: historyItem,
     })
   } catch (error) {
     if (error.name === 'ValidationError') {
@@ -56,21 +58,22 @@ exports.addGroceryItem = async (req, res, next) => {
   }
 }
 
-//@desc Delete groceryItem
-//@route DELETE /api/v1/groceryItems:id
+//@desc Delete history item
+//@route DELETE /api/v1/historyItems:id
 //@access Public
-exports.deleteGroceryItem = async (req, res, next) => {
-  try {
-    const groceryItem = await GroceryItem.findById(req.params.id)
 
-    if (!groceryItem) {
+exports.deleteItemFromHistory = async (req, res, next) => {
+  try {
+    const historyItem = await HistoryItem.findById(req.params.id)
+
+    if (!historyItem) {
       return res.status(404).json({
         success: false,
-        error: 'No groceryItem found',
+        error: 'No history item found',
       })
     }
 
-    await groceryItem.remove()
+    await historyItem.remove()
 
     return res.status(204).json({
       success: true,

@@ -11,7 +11,8 @@ function MakeList() {
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
   const [newItemStore, setNewItemStore] = useState('')
-  const [newItemFrequency, setNewItemFrequency] = useState('')
+  // const [newItemFrequency, setNewItemFrequency] = useState('')
+  const [newItemLastPurchased, setNewItemLastPurchased] = useState('')
   const [showForm, setShowForm] = useState(true)
 
   const resetForm = () => {
@@ -19,19 +20,17 @@ function MakeList() {
     setNewItemDescription('')
     setNewItemAisle('')
     setNewItemStore('')
-    setNewItemFrequency('')
+    setNewItemLastPurchased('')
   }
 
   const addToList = (e) => {
     e.preventDefault()
     console.log('in addToList ')
     const newItem = {
-      id: Math.floor(Math.random() * 1000000),
       itemName: newItemName.toLowerCase(),
       description: newItemDescription,
       aisle: newItemAisle.toLowerCase(),
       defaultStore: newItemStore.toUpperCase(),
-      expectedFrequency: newItemFrequency,
     }
 
     //check newItemStore against store values in context and set to 'any/other' if it doesn't match
@@ -97,9 +96,9 @@ function MakeList() {
           <div className="form-control">
             <input
               type="text"
-              placeholder="frequency"
-              value={newItemFrequency}
-              onChange={(e) => setNewItemFrequency(e.target.value)}
+              placeholder="date last purchased"
+              value={newItemLastPurchased}
+              readOnly
             />
           </div>
 

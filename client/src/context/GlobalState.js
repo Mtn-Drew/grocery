@@ -6,122 +6,9 @@ import axios from 'axios'
 
 //Init state
 const initialState = {
-  store: [
-    // {
-    //   storeName: 'HARMONS',
-    //   description: '',
-    //   location: '',
-    //   id: 1,
-    // },
-    // {
-    //   storeName: 'COSTCO',
-    //   description: '',
-    //   location: '',
-    //   id: 2,
-    // },
-    // {
-    //   storeName: 'WINCO',
-    //   description: '',
-    //   location: '',
-    //   id: 3,
-    // },
-    // {
-    //   storeName: 'ANY/OTHER',
-    //   description: '',
-    //   location: '',
-    //   id: 4,
-    // },
-  ],
-  groceryItem: [
-    // {
-    //   itemName: 'eggs',
-    //   description: 'chicken embryo',
-    //   aisle: 'eggs',
-    //   defaultStore: 'COSTCO',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 1,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'meat',
-    //   description: 'flesh of animals',
-    //   aisle: 'meat',
-    //   defaultStore: 'COSTCO',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 2,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'half -n- half',
-    //   description: 'coffee condiment',
-    //   aisle: 'dairy',
-    //   defaultStore: 'WINCO',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 3,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'brussel sprouts',
-    //   description: 'little lettuce cabbage heads',
-    //   aisle: 'produce',
-    //   defaultStore: 'HARMONS',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 4,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'cat food',
-    //   description: 'feline sustenance',
-    //   aisle: 'pet',
-    //   defaultStore: 'WINCO',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 5,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'broccoli',
-    //   description: 'little lettuce cabbage heads',
-    //   aisle: 'produce',
-    //   defaultStore: 'HARMONS',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 6,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'craft beer',
-    //   description: 'little lettuce cabbage heads',
-    //   aisle: 'beer',
-    //   defaultStore: 'HARMONS',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 7,
-    //   checked: false,
-    // },
-    // {
-    //   itemName: 'apples',
-    //   description: 'little lettuce cabbage heads',
-    //   aisle: 'produce',
-    //   defaultStore: 'HARMONS',
-    //   altStore: '',
-    //   expectedFrequency: '',
-    //   observedFrequency: '',
-    //   id: 8,
-    //   checked: false,
-    // },
-  ],
+  store: [],
+  groceryItem: [],
+  historyItem: [],
   transactions: [],
   error: null,
   groceryLoading: true,
@@ -268,6 +155,60 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  async function getHistoryItems() {
+    try {
+      const res = await axios.get('/api/v1/historyItems')
+
+      dispatch({
+        type: 'GET_HISTORY',
+        payload: res.data.data,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
+  async function deleteItemFromHistory(id) {
+    try {
+      await axios.delete(`/api/v1/historyItems/${id}`)
+
+      dispatch({
+        type: 'DELETE_HISTORY_ITEM_FROM_LIST',
+        payload: id,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
+  async function addItemToHistory(item) {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    try {
+      const res = await axios.post('/api/v1/historyItems', item, config)
+
+      dispatch({
+        type: 'ADD_ITEM_TO_HISTORY',
+        payload: res.data.data,
+      })
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -280,6 +221,9 @@ export const GlobalProvider = ({ children }) => {
         getStores,
         deleteStore,
         addStore,
+        getHistoryItems,
+        addItemToHistory,
+        deleteItemFromHistory,
         transactions: state.transactions,
         error: state.error,
         groceryLoading: state.groceryLoading,

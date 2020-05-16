@@ -11,6 +11,7 @@ connectDB()
 const transactions = require('./routes/transactions')
 const groceryItems = require('./routes/groceryItems')
 const groceryStores = require('./routes/groceryStores')
+const historyItems = require('./routes/historyItems')
 
 const app = express()
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/transactions', transactions)
 app.use('/api/v1/groceryItems', groceryItems)
 app.use('/api/v1/groceryStores', groceryStores)
+app.use('/api/v1/historyItems', historyItems)
 
 const PORT = process.env.PORT || 5000
 
