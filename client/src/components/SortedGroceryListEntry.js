@@ -10,9 +10,8 @@ function SortedListEntry(props) {
       <ul className="list">
         {props.list.map((item) => (
           <li
-            key={item.itemName}
+            key={item._id}
             style={{ textDecoration: item.checked ? 'line-through' : '' }}
-            // onClick={() => toggleChecked(item)}
           >
             <button
               className="delete-btn"

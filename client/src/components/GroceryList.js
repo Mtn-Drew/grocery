@@ -26,8 +26,12 @@ function GroceryList() {
   useEffect(() => {
     console.log('in UE 2--')
 
+    // const sortedGroceries = groceryItem.sort((a, b) =>
+    //   a.aisle > b.aisle ? 1 : a.itemName > b.itemName ? 1 : -1
+    // )
+
     const sortedGroceries = groceryItem.sort((a, b) =>
-      a.aisle > b.aisle ? 1 : a.itemName > b.itemName ? 1 : -1
+      a.aisle > b.aisle ? 1 : -1
     )
 
     console.log('sorted->', sortedGroceries)
