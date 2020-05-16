@@ -14,6 +14,7 @@ function GroceryList() {
   } = useContext(GlobalContext)
 
   const [displayedList, setDisplayedList] = useState([])
+  const [showList, setShowList] = useState(true)
 
   useEffect(() => {
     getGroceryItems()
@@ -57,8 +58,13 @@ function GroceryList() {
     <div className="container">
       {console.log('groceryItem -', groceryItem)}
       {console.log('store -', store)}
-      <h3>grocery list</h3>
-      {groceryLoading ? <Loader /> : displayedList}
+      <h3>
+        grocery list
+        <span onClick={() => setShowList(!showList)}>
+          {showList ? '🔼' : '🔽'}
+        </span>
+      </h3>
+      {showList ? groceryLoading ? <Loader /> : displayedList : null}
     </div>
   )
 }
