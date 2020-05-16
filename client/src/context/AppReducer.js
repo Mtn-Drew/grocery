@@ -33,7 +33,7 @@ export default (state, action) => {
     case 'GET_GROCERIES':
       return {
         ...state,
-        loading: false,
+        groceryLoading: false,
         groceryItem: action.payload,
       }
 
@@ -41,6 +41,7 @@ export default (state, action) => {
       return {
         ...state,
         store: action.payload,
+        storeLoading: false,
       }
 
     case 'ADD_STORE':
@@ -63,7 +64,7 @@ export default (state, action) => {
     case 'GET_TRANSACTIONS':
       return {
         ...state,
-        loading: false,
+        groceryLoading: false,
         transactions: action.payload,
       }
     case 'DELETE_TRANSACTION':

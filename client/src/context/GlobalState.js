@@ -124,7 +124,8 @@ const initialState = {
   ],
   transactions: [],
   error: null,
-  loading: true,
+  groceryLoading: true,
+  storeLoading: true,
 }
 
 // Create context
@@ -231,7 +232,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteStore(id) {
     try {
-      await axios.delete(`/api/v1/stores/${id}`)
+      await axios.delete(`/api/v1/groceryStores/${id}`)
 
       dispatch({
         type: 'DELETE_STORE',
@@ -253,7 +254,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.post('/api/v1/stores', item, config)
+      const res = await axios.post('/api/v1/groceryStores', item, config)
 
       dispatch({
         type: 'ADD_STORE',
@@ -281,7 +282,7 @@ export const GlobalProvider = ({ children }) => {
         addStore,
         transactions: state.transactions,
         error: state.error,
-        loading: state.loading,
+        groceryLoading: state.groceryLoading,
       }}
     >
       {children}

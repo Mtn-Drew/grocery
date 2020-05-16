@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-import StoreList from './StoreList'
+import SortedGroceryListEntry from './SortedGroceryListEntry'
 import Loader from './Loader'
 
 function GroceryList() {
@@ -10,7 +10,7 @@ function GroceryList() {
     getStores,
     groceryItem,
     getGroceryItems,
-    loading,
+    groceryLoading,
   } = useContext(GlobalContext)
 
   const [displayedList, setDisplayedList] = useState([])
@@ -39,7 +39,11 @@ function GroceryList() {
 
       if (list.length !== 0) {
         let newListItem = (
-          <StoreList name={store.storeName} list={list} key={store._id} />
+          <SortedGroceryListEntry
+            name={store.storeName}
+            list={list}
+            key={store._id}
+          />
         )
         setDisplayedList((prev) => [...prev, newListItem])
       }
@@ -54,7 +58,7 @@ function GroceryList() {
       {console.log('groceryItem -', groceryItem)}
       {console.log('store -', store)}
       <h3>grocery list</h3>
-      {loading ? <Loader /> : displayedList}
+      {groceryLoading ? <Loader /> : displayedList}
     </div>
   )
 }

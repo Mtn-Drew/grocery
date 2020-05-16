@@ -4,7 +4,8 @@ import './App.css'
 import Header from './components/Header'
 import GroceryList from './components/GroceryList'
 import HistoryList from './components/HistoryList'
-import MakeList from './components/MakeList'
+import MakeGroceryList from './components/MakeGroceryList'
+import StoreList from './components/StoreList'
 import SubmitButtons from './components/SubmitButtons'
 
 import { GlobalProvider } from './context/GlobalState'
@@ -15,8 +16,9 @@ function App() {
       <Header />
       <SubmitButtons />
       <GroceryList />
-      <MakeList />
+      <MakeGroceryList />
       <HistoryList />
+      <StoreList />
     </GlobalProvider>
   )
 }
