@@ -11,6 +11,7 @@ function GroceryList() {
     groceryItem,
     getGroceryItems,
     groceryLoading,
+    getHistoryItems,
   } = useContext(GlobalContext)
 
   const [displayedList, setDisplayedList] = useState([])
@@ -19,22 +20,14 @@ function GroceryList() {
   useEffect(() => {
     getGroceryItems()
     getStores()
+    getHistoryItems()
     //eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log('in UE getGroceryItems-groceryItem->', groceryItem)
   }, [])
 
   useEffect(() => {
-    console.log('in UE 2--')
-
-    // const sortedGroceries = groceryItem.sort((a, b) =>
-    //   a.aisle > b.aisle ? 1 : a.itemName > b.itemName ? 1 : -1
-    // )
-
     const sortedGroceries = groceryItem.sort((a, b) =>
       a.aisle > b.aisle ? 1 : -1
     )
-
-    console.log('sorted->', sortedGroceries)
 
     const listByStore = (store) => {
       const list = sortedGroceries.filter(
@@ -60,8 +53,6 @@ function GroceryList() {
 
   return (
     <div className="container">
-      {console.log('groceryItem -', groceryItem)}
-      {console.log('store -', store)}
       <h3>
         grocery list
         <span onClick={() => setShowList(!showList)}>

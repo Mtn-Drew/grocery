@@ -6,7 +6,7 @@ function StoreListEntry(props) {
   const [showDescription, setShowDescription] = useState(false)
 
   const description = <div>{props.description}</div>
-  const addStoreForm = <form></form>
+  // const addStoreForm = <form></form>
 
   return (
     <div
@@ -14,7 +14,7 @@ function StoreListEntry(props) {
         setShowDescription(!showDescription)
       }}
     >
-      {console.log('props-', props)}
+      {/* {console.log('props-', props)} */}
       <button className="delete-btn" onClick={() => deleteStore(props.sid)}>
         X
       </button>

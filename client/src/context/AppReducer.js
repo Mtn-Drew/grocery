@@ -59,6 +59,28 @@ export default (state, action) => {
         store: storeArrDelete,
       }
 
+    case 'GET_HISTORY':
+      return {
+        ...state,
+        historyItem: action.payload,
+        historyLoading: false,
+      }
+
+    case 'DELETE_HISTORY_ITEM_FROM_LIST':
+      const historyArrDelete = state.historyItem.filter(
+        (item) => item._id !== action.payload
+      )
+      return {
+        ...state,
+        historyItem: historyArrDelete,
+      }
+
+    case 'ADD_ITEM_TO_HISTORY':
+      return {
+        ...state,
+        historyItem: [...state.historyItem, action.payload],
+      }
+
     //transactions
     case 'GET_TRANSACTIONS':
       return {

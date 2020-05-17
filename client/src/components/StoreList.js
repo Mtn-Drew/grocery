@@ -13,13 +13,12 @@ function StoreList() {
 
   useEffect(() => {
     setDisplayedList([])
-    console.log('storeUE- ', store)
+
     store.map((s) => {
       const newListItem = (
         <li key={s._id}>
           <StoreListEntry
             name={s.storeName}
-            // key={s._id}  🔽
             sid={s._id}
             description={s.description}
           />

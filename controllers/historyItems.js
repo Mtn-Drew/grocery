@@ -7,7 +7,7 @@ const HistoryItem = require('../models/HistoryItem')
 exports.getHistoryItems = async (req, res, next) => {
   try {
     const historyItems = await HistoryItem.find()
-    console.log(`historyItems- ${historyItems}`.yellow)
+
     return res.status(200).json({
       success: true,
       count: historyItems.length,

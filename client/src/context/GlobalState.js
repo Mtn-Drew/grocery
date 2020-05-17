@@ -9,10 +9,11 @@ const initialState = {
   store: [],
   groceryItem: [],
   historyItem: [],
-  transactions: [],
+  // transactions: [],
   error: null,
   groceryLoading: true,
   storeLoading: true,
+  historyLoading: true,
 }
 
 // Create context
@@ -24,21 +25,21 @@ export const GlobalProvider = ({ children }) => {
 
   // Actions
 
-  async function getTransactions() {
-    try {
-      const res = await axios.get('/api/v1/transactions')
+  // async function getTransactions() {
+  //   try {
+  //     const res = await axios.get('/api/v1/transactions')
 
-      dispatch({
-        type: 'GET_TRANSACTIONS',
-        payload: res.data.data,
-      })
-    } catch (error) {
-      dispatch({
-        type: 'TRANSACTION_ERROR',
-        payload: error.response.data.error,
-      })
-    }
-  }
+  //     dispatch({
+  //       type: 'GET_TRANSACTIONS',
+  //       payload: res.data.data,
+  //     })
+  //   } catch (error) {
+  //     dispatch({
+  //       type: 'TRANSACTION_ERROR',
+  //       payload: error.response.data.error,
+  //     })
+  //   }
+  // }
 
   async function getGroceryItems() {
     try {
@@ -221,10 +222,11 @@ export const GlobalProvider = ({ children }) => {
         getStores,
         deleteStore,
         addStore,
+        historyItem: state.historyItem,
         getHistoryItems,
         addItemToHistory,
         deleteItemFromHistory,
-        transactions: state.transactions,
+        // transactions: state.transactions,
         error: state.error,
         groceryLoading: state.groceryLoading,
       }}

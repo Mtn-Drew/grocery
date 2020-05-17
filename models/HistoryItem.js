@@ -11,15 +11,15 @@ const HistoryItemSchema = new mongoose.Schema({
     trim: true,
     required: [true, 'Please add some text'],
   },
-  // groceryItemDescription: {
-  //   type: String,
-  //   trim: true,
-  // },
-  // groceryItemAisle: {
-  //   type: String,
-  //   trim: true,
-  //   lowercase: true,
-  // },
+  groceryItemDescription: {
+    type: String,
+    trim: true,
+  },
+  groceryItemAisle: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
   lastPurchased: {
     type: Date,
     default: Date.now,
