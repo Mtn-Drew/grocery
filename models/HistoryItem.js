@@ -20,10 +20,10 @@ const HistoryItemSchema = new mongoose.Schema({
   //   trim: true,
   //   lowercase: true,
   // },
-  // lastPurchased: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
+  lastPurchased: {
+    type: Date,
+    default: Date.now,
+  },
 })
 
 module.exports = mongoose.model('HistoryItem', HistoryItemSchema)

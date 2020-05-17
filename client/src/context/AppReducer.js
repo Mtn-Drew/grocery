@@ -10,7 +10,6 @@ export default (state, action) => {
       }
 
     case 'ADD_ITEM_TO_LIST':
-      console.log('in add item -', action.payload)
       return {
         ...state,
         groceryItem: [...state.groceryItem, action.payload],
