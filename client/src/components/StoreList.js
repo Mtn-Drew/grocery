@@ -25,6 +25,7 @@ function StoreList() {
         </li>
       )
       setDisplayedList((prev) => [...prev, newListItem])
+      return null
     })
   }, [store])
 

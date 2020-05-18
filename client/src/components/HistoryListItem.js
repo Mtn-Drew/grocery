@@ -18,7 +18,6 @@ function HistoryListItem(props) {
           setShowDescription(!showDescription)
         }}
       >
-        {console.log('props-', props)}
         <button
           className="delete-btn"
           onClick={() => deleteItemFromHistory(props.hiid)}

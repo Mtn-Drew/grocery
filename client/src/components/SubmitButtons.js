@@ -24,9 +24,9 @@ function SubmitButtons() {
         groceryItemAisle: item.aisle,
       }
       addItemToHistory(histItem)
-      console.log('histItem->', histItem)
-      console.log('item->', item)
+
       deleteItemFromList(item._id)
+      return null
     })
   }
   return (

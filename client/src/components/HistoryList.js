@@ -17,9 +17,8 @@ function HistoryList() {
 
   useEffect(() => {
     setDisplayedList([])
-    console.log('HITEM--', historyItem)
+
     if (historyItem) {
-      console.log('in IF HITEM')
       historyItem.map((hi) => {
         const newListItem = (
           <li key={hi._id}>
@@ -34,6 +33,7 @@ function HistoryList() {
           </li>
         )
         setDisplayedList((prev) => [...prev, newListItem])
+        return null
       })
     }
   }, [historyItem])
