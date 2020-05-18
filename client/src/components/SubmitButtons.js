@@ -21,10 +21,11 @@ function SubmitButtons() {
         groceryItemName: item.itemName,
         storeName: item.defaultStore,
         groceryItemDescription: item.description,
-        groceiyItemAisle: item.aisle,
+        groceryItemAisle: item.aisle,
       }
       addItemToHistory(histItem)
-
+      console.log('histItem->', histItem)
+      console.log('item->', item)
       deleteItemFromList(item._id)
     })
   }
