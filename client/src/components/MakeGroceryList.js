@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import SearchBar from './SearchBar'
 
 // under input, display the closest search result to what has been typed so far.  When you click on search result,  you select that item.  You can then click to add to list, or click edit
 //when found in search, it lists default values (aisle, store, frequency)
@@ -11,7 +12,6 @@ function MakeList() {
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
   const [newItemStore, setNewItemStore] = useState('')
-  // const [newItemFrequency, setNewItemFrequency] = useState('')
   const [newItemLastPurchased, setNewItemLastPurchased] = useState('')
   const [showForm, setShowForm] = useState(true)
 
@@ -55,10 +55,12 @@ function MakeList() {
           {showForm ? '🔼' : '🔽'}
         </span>
       </h3>
+
+      <SearchBar />
       {showForm ? (
         <form onSubmit={addToList}>
           <div className="form-control">
-            <label htmlFor="text">Search or Add New Item</label>
+            <label htmlFor="text">Add New Item</label>
             <input
               type="text"
               placeholder="grocery item name"
@@ -67,7 +69,6 @@ function MakeList() {
               required
             />
           </div>
-          {/* <input type="text" value={newItemName} onChange={() => {}} /> */}
 
           <div className="form-control">
             <input
