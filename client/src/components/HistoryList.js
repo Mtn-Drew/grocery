@@ -3,6 +3,9 @@ import { GlobalContext } from '../context/GlobalState'
 
 import HistoryListItem from './HistoryListItem'
 
+import { SlideDown } from 'react-slidedown'
+import 'react-slidedown/lib/slidedown.css'
+
 //by date, store or by item toggle?
 
 function HistoryList() {
@@ -62,11 +65,13 @@ function HistoryList() {
           {showList ? '🔼' : '🔽'}
         </span>
       </h3>
-      {showList ? (
-        <ul className="list">
-          <div>{displayedList}</div>
-        </ul>
-      ) : null}
+      <SlideDown>
+        {showList ? (
+          <ul className="list">
+            <div>{displayedList}</div>
+          </ul>
+        ) : null}
+      </SlideDown>
     </div>
   )
 }

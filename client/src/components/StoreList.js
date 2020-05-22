@@ -4,6 +4,7 @@ import { GlobalContext } from '../context/GlobalState'
 import Loader from './Loader'
 import StoreListEntry from './StoreListEntry'
 import MakeStoreList from './MakeStoreList'
+import SlideDown from 'react-slidedown'
 
 function StoreList() {
   const { store, storeLoading } = useContext(GlobalContext)
@@ -31,22 +32,24 @@ function StoreList() {
 
   return (
     <div>
-      <h3>
-        store list
-        <span onClick={() => setShowList(!showList)}>
-          {showList ? '🔼' : '🔽'}
-        </span>
-        {showList ? (
-          <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>
-            {showMakeStoreList ? '➖' : '➕'}
+      <SlideDown>
+        <h3>
+          store list
+          <span onClick={() => setShowList(!showList)}>
+            {showList ? '🔼' : '🔽'}
           </span>
-        ) : null}
-      </h3>
+          {showList ? (
+            <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>
+              {showMakeStoreList ? '➖' : '➕'}
+            </span>
+          ) : null}
+        </h3>
 
-      {showMakeStoreList && showList ? <MakeStoreList /> : null}
-      {showList ? (
-        <ul className="list">{storeLoading ? <Loader /> : displayedList}</ul>
-      ) : null}
+        {showMakeStoreList && showList ? <MakeStoreList /> : null}
+        {showList ? (
+          <ul className="list">{storeLoading ? <Loader /> : displayedList}</ul>
+        ) : null}
+      </SlideDown>
     </div>
   )
 }

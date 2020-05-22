@@ -34,11 +34,11 @@ function SearchBar() {
     } else {
       const makeDisplay = matches.map((item) => {
         return (
-          <SlideDown>
+          <SlideDown key={item._id}>
             <form
               onSubmit={addToList(item)}
               // key={item.lastPurchased + item.groceryItemName}
-              key={item._id}
+              // key={item._id}
             >
               <div className="form-control">
                 <label htmlFor="text">Add New Item</label>

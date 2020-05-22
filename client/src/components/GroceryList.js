@@ -4,6 +4,9 @@ import { GlobalContext } from '../context/GlobalState'
 import SortedGroceryListEntry from './SortedGroceryListEntry'
 import Loader from './Loader'
 
+import { SlideDown } from 'react-slidedown'
+import 'react-slidedown/lib/slidedown.css'
+
 function GroceryList() {
   const {
     store,
@@ -59,7 +62,9 @@ function GroceryList() {
           {showList ? '🔼' : '🔽'}
         </span>
       </h3>
-      {showList ? groceryLoading ? <Loader /> : displayedList : null}
+      <SlideDown>
+        {showList ? groceryLoading ? <Loader /> : displayedList : null}
+      </SlideDown>
     </div>
   )
 }

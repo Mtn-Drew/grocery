@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import SearchBar from './SearchBar'
 
+import { SlideDown } from 'react-slidedown'
+import 'react-slidedown/lib/slidedown.css'
+
 // under input, display the closest search result to what has been typed so far.  When you click on search result,  you select that item.  You can then click to add to list, or click edit
 //when found in search, it lists default values (aisle, store, frequency)
 //when you click edit, you can change values for aisle, store, frequency
@@ -55,57 +58,58 @@ function MakeList() {
           {showForm ? '🔼' : '🔽'}
         </span>
       </h3>
+      <SlideDown>
+        <SearchBar />
+        {showForm ? (
+          <form onSubmit={addToList}>
+            <div className="form-control">
+              <label htmlFor="text">Add New Item</label>
+              <input
+                type="text"
+                placeholder="grocery item name"
+                value={newItemName}
+                onChange={(e) => setNewItemName(e.target.value)}
+                required
+              />
+            </div>
 
-      <SearchBar />
-      {showForm ? (
-        <form onSubmit={addToList}>
-          <div className="form-control">
-            <label htmlFor="text">Add New Item</label>
-            <input
-              type="text"
-              placeholder="grocery item name"
-              value={newItemName}
-              onChange={(e) => setNewItemName(e.target.value)}
-              required
-            />
-          </div>
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="description"
+                value={newItemDescription}
+                onChange={(e) => setNewItemDescription(e.target.value)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="aisle"
+                value={newItemAisle}
+                onChange={(e) => setNewItemAisle(e.target.value)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="store"
+                value={newItemStore}
+                onChange={(e) => setNewItemStore(e.target.value)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="date last purchased"
+                value={newItemLastPurchased}
+                readOnly
+              />
+            </div>
 
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="description"
-              value={newItemDescription}
-              onChange={(e) => setNewItemDescription(e.target.value)}
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="aisle"
-              value={newItemAisle}
-              onChange={(e) => setNewItemAisle(e.target.value)}
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="store"
-              value={newItemStore}
-              onChange={(e) => setNewItemStore(e.target.value)}
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="date last purchased"
-              value={newItemLastPurchased}
-              readOnly
-            />
-          </div>
-
-          <button className="btn">Add To Grocery List</button>
-        </form>
-      ) : null}
+            <button className="btn">Add To Grocery List</button>
+          </form>
+        ) : null}
+      </SlideDown>
     </div>
   )
 }
