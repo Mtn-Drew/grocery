@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
+import { SlideDown } from 'react-slidedown'
+import 'react-slidedown/lib/slidedown.css'
+
 function SearchBar() {
   const { historyItem, addItemToList } = useContext(GlobalContext)
   const [query, setQuery] = useState('')
@@ -31,56 +34,59 @@ function SearchBar() {
     } else {
       const makeDisplay = matches.map((item) => {
         return (
-          <form
-            onSubmit={addToList(item)}
-            key={item.lastPurchased + item.groceryItemName}
-          >
-            <div className="form-control">
-              <label htmlFor="text">Add New Item</label>
-              <input
-                type="text"
-                placeholder="grocery item name"
-                value={item.groceryItemName}
-                name="groceryName"
-                readOnly
-              />
-            </div>
+          <SlideDown>
+            <form
+              onSubmit={addToList(item)}
+              // key={item.lastPurchased + item.groceryItemName}
+              key={item._id}
+            >
+              <div className="form-control">
+                <label htmlFor="text">Add New Item</label>
+                <input
+                  type="text"
+                  placeholder="grocery item name"
+                  value={item.groceryItemName}
+                  name="groceryName"
+                  readOnly
+                />
+              </div>
 
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="description"
-                value={item.groceryItemDescription}
-                readOnly
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="aisle"
-                value={item.groceryItemAisle}
-                readOnly
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="store"
-                value={item.storeName}
-                readOnly
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="date last purchased"
-                value={item.lastPurchased}
-                readOnly
-              />
-            </div>
+              <div className="form-control">
+                <input
+                  type="text"
+                  placeholder="description"
+                  value={item.groceryItemDescription}
+                  readOnly
+                />
+              </div>
+              <div className="form-control">
+                <input
+                  type="text"
+                  placeholder="aisle"
+                  value={item.groceryItemAisle}
+                  readOnly
+                />
+              </div>
+              <div className="form-control">
+                <input
+                  type="text"
+                  placeholder="store"
+                  value={item.storeName}
+                  readOnly
+                />
+              </div>
+              <div className="form-control">
+                <input
+                  type="text"
+                  placeholder="date last purchased"
+                  value={item.lastPurchased}
+                  readOnly
+                />
+              </div>
 
-            <button className="btn">Add To Grocery List</button>
-          </form>
+              <button className="btn">Add To Grocery List</button>
+            </form>
+          </SlideDown>
         )
       })
       setDisplayResults(makeDisplay)

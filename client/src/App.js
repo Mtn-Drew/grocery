@@ -15,6 +15,7 @@ function App() {
     <GlobalProvider>
       <Header />
       <SubmitButtons />
+
       <GroceryList />
       <MakeGroceryList />
       <HistoryList />
