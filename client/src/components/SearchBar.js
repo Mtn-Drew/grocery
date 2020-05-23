@@ -32,14 +32,31 @@ function SearchBar() {
       matches = []
       setDisplayResults([])
     } else {
-      const makeDisplay = matches.map((item) => {
+      let noDuplicateMatches = []
+      if (matches.length > 1) {
+        const sortedMatches = matches.sort((a, b) =>
+          a.groceryItemName > b.groceryItemName ? 1 : -1
+        )
+        console.log('sorted matches ', sortedMatches)
+        noDuplicateMatches = [matches[0]]
+        for (let i = 1; i < matches.length; i++) {
+          if (
+            sortedMatches[i].groceryItemName !==
+            sortedMatches[i - 1].groceryItemName
+          ) {
+            noDuplicateMatches.push(sortedMatches[i])
+          }
+        }
+        console.log('No Dupes-- ', noDuplicateMatches)
+      } else {
+        //if fewer than 2 matches, just clone matches into noDuplicateMatches
+        noDuplicateMatches = matches.map((x) => x)
+      }
+
+      const makeDisplay = noDuplicateMatches.map((item) => {
         return (
           <SlideDown key={item._id}>
-            <form
-              onSubmit={addToList(item)}
-              // key={item.lastPurchased + item.groceryItemName}
-              // key={item._id}
-            >
+            <form onSubmit={addToList(item)}>
               <div className="form-control">
                 <label htmlFor="text">Add New Item</label>
                 <input

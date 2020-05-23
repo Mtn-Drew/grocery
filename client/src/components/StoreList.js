@@ -32,19 +32,18 @@ function StoreList() {
 
   return (
     <div>
-      <SlideDown>
-        <h3>
-          store list
-          <span onClick={() => setShowList(!showList)}>
-            {showList ? '🔼' : '🔽'}
+      <h3>
+        store list
+        <span onClick={() => setShowList(!showList)}>
+          {showList ? '🔼' : '🔽'}
+        </span>
+        {showList ? (
+          <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>
+            {showMakeStoreList ? '➖' : '➕'}
           </span>
-          {showList ? (
-            <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>
-              {showMakeStoreList ? '➖' : '➕'}
-            </span>
-          ) : null}
-        </h3>
-
+        ) : null}
+      </h3>
+      <SlideDown>
         {showMakeStoreList && showList ? <MakeStoreList /> : null}
         {showList ? (
           <ul className="list">{storeLoading ? <Loader /> : displayedList}</ul>
