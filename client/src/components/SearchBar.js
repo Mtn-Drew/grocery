@@ -37,7 +37,7 @@ function SearchBar() {
         const sortedMatches = matches.sort((a, b) =>
           a.groceryItemName > b.groceryItemName ? 1 : -1
         )
-        console.log('sorted matches ', sortedMatches)
+
         noDuplicateMatches = [matches[0]]
         for (let i = 1; i < matches.length; i++) {
           if (
@@ -47,7 +47,6 @@ function SearchBar() {
             noDuplicateMatches.push(sortedMatches[i])
           }
         }
-        console.log('No Dupes-- ', noDuplicateMatches)
       } else {
         //if fewer than 2 matches, just clone matches into noDuplicateMatches
         noDuplicateMatches = matches.map((x) => x)
@@ -109,7 +108,6 @@ function SearchBar() {
       setDisplayResults(makeDisplay)
     }
 
-    console.log('matches-->', matches)
     setQuery(e.target.value)
   }
 
