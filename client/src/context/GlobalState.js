@@ -25,22 +25,6 @@ export const GlobalProvider = ({ children }) => {
 
   // Actions
 
-  // async function getTransactions() {
-  //   try {
-  //     const res = await axios.get('/api/v1/transactions')
-
-  //     dispatch({
-  //       type: 'GET_TRANSACTIONS',
-  //       payload: res.data.data,
-  //     })
-  //   } catch (error) {
-  //     dispatch({
-  //       type: 'TRANSACTION_ERROR',
-  //       payload: error.response.data.error,
-  //     })
-  //   }
-  // }
-
   async function getGroceryItems() {
     try {
       const res = await axios.get('/api/v1/groceryItems')
