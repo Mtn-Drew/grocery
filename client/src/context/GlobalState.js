@@ -57,6 +57,36 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  async function updateGroceryItem(item) {
+    console.log('in updateGroceryITem-', item)
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    const data = {
+      itemName: item.itemName,
+      description: item.description,
+      aisle: item.aisle,
+      defaultStore: item.defaultStore,
+      checked: item.checked
+    }
+    try {
+      await axios.put('/api/v1/groceryItems', data, config)
+
+      dispatch({
+        type: 'UPDATE_GROCERY_ITEM',
+        payload:item,
+      })
+      
+    } catch (error) {
+      dispatch({
+        type: 'TRANSACTION_ERROR',
+        payload: error.response.data.error,
+      })
+    }
+  }
+
   async function addItemToList(item) {
     const config = {
       headers: {
@@ -80,10 +110,13 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function toggleChecked(item) {
+    console.log('in toggle-- ',item)
     dispatch({
       type: 'TOGGLE_CHECKED',
       payload: item,
     })
+
+    
   }
 
   async function getStores() {

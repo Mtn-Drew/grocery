@@ -31,6 +31,7 @@ exports.addGroceryItem = async (req, res, next) => {
       aisle,
       defaultStore,
       expectedFrequency,
+      checked,
     } = req.body
 
     const groceryItem = await GroceryItem.create(req.body)
@@ -77,6 +78,34 @@ exports.deleteGroceryItem = async (req, res, next) => {
       data: {},
     })
   } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: 'Server Error',
+    })
+  }
+}
+
+
+//@desc Update groceryItem
+//@route PUT /api/v1/groceryItems:id
+//@access Public
+exports.updateGroceryItem = async (req, res, next) => {
+  try {
+    const groceryItem = await GroceryItem.findByIdAndUpdate(req.params.id, req.body,{new:true,useFindAndModify:false})
+
+    if (!groceryItem) {
+      return res.status(404).json({
+        success: false,
+        error: 'No groceryItem found',
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: {groceryItem},
+    })
+  } catch (error) {
+    console.log('---err--- ', error)
     return res.status(500).json({
       success: false,
       error: 'Server Error',

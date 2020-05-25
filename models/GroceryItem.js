@@ -30,6 +30,9 @@ const GroceryItemSchema = new mongoose.Schema({
   lastPurchased: {
     type: Date,
   },
+  checked : {
+    type:Boolean,
+  }
 })
 
 module.exports = mongoose.model('GroceryItem', GroceryItemSchema)

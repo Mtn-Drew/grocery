@@ -15,6 +15,12 @@ export default (state, action) => {
         groceryItem: [...state.groceryItem, action.payload],
       }
 
+    case 'UPDATE_GROCERY_ITEM':
+      return {
+        ...state,
+        groceryItem: [...state.groceryItem, action.payload],
+      }
+
     case 'TOGGLE_CHECKED':
       const tempArrChecked = state.groceryItem.map((item) => {
         if (item._id === action.payload._id) {

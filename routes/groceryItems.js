@@ -5,10 +5,11 @@ const {
   getGroceryItems,
   addGroceryItem,
   deleteGroceryItem,
+  updateGroceryItem,
 } = require('../controllers/groceryItems')
 
 router.route('/').get(getGroceryItems).post(addGroceryItem)
 
-router.route('/:id').delete(deleteGroceryItem)
+router.route('/:id').delete(deleteGroceryItem).put(updateGroceryItem)
 
 module.exports = router
