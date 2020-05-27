@@ -14,6 +14,8 @@ const initialState = {
   groceryLoading: true,
   storeLoading: true,
   historyLoading: true,
+  showModal:false,
+  modal:''
 }
 
 // Create context
@@ -115,8 +117,14 @@ export const GlobalProvider = ({ children }) => {
       type: 'TOGGLE_CHECKED',
       payload: item,
     })
+  }
 
-    
+  function toggleModal(item) {
+    console.log('in toggleModal-- ', item)
+    dispatch({
+      type: 'TOGGLE_MODAL',
+      payload: item,
+    })
   }
 
   async function getStores() {
@@ -243,9 +251,12 @@ export const GlobalProvider = ({ children }) => {
         getHistoryItems,
         addItemToHistory,
         deleteItemFromHistory,
+        toggleModal,
+        modal:state.modal,
         // transactions: state.transactions,
         error: state.error,
         groceryLoading: state.groceryLoading,
+        showModal: state.showModal
       }}
     >
       {children}

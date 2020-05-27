@@ -32,6 +32,7 @@ function GroceryList() {
       a.aisle > b.aisle ? 1 : -1
     )
 
+ 
     const listByStore = (store) => {
       const list = sortedGroceries.filter(
         (item) =>
@@ -44,6 +45,7 @@ function GroceryList() {
             name={store.storeName}
             list={list}
             key={store._id}
+
           />
         )
         setDisplayedList((prev) => [...prev, newListItem])

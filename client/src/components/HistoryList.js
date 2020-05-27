@@ -41,22 +41,6 @@ function HistoryList() {
     }
   }, [historyItem])
 
-  // useEffect(() => {
-  //   historyItem.forEach((hi) => {
-  //     const newListItem = (
-  //       <HistoryListItem
-  //         name={hi.groceryItemName}
-  //         store={hi.storeName}
-  //         desc={hi.groceryItemDescription}
-  //         aisle={hi.groceryItemAisle}
-  //         date={hi.lastPurchased}
-  //         key={hi._id}
-  //       />
-  //     )
-  //     setDisplayedList((prev) => [...prev, newListItem])
-  //   })
-  // }, [displayedList])
-
   return (
     <div>
       <h3>

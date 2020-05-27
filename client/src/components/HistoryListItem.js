@@ -5,11 +5,11 @@ function HistoryListItem(props) {
   const { deleteItemFromHistory } = useContext(GlobalContext)
   const [showDescription, setShowDescription] = useState(false)
   const description = (
-    <div>
-      <div>{props.store}</div>
-      <div>{props.aisle}</div>
-      <div>{props.description}</div>
-    </div>
+    <ul>
+      <li>{props.store}</li>
+      <li>{props.aisle}</li>
+      <li>{props.description}</li>
+    </ul>
   )
   return (
     <div>

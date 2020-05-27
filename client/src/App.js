@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './App.css'
 
 import Header from './components/Header'
@@ -7,19 +7,23 @@ import HistoryList from './components/HistoryList'
 import MakeGroceryList from './components/MakeGroceryList'
 import StoreList from './components/StoreList'
 import SubmitButtons from './components/SubmitButtons'
+import Modal from './components/Modal'
 
 import { GlobalProvider } from './context/GlobalState'
 
 function App() {
+
   return (
     <GlobalProvider>
-      <Header />
-      <SubmitButtons />
-
-      <GroceryList />
-      <MakeGroceryList />
-      <HistoryList />
-      <StoreList />
+      <div className="App">
+        <Modal />
+        <Header />
+        <SubmitButtons />
+        <GroceryList />
+        <MakeGroceryList />
+        <HistoryList />
+        <StoreList />
+      </div>
     </GlobalProvider>
   )
 }
