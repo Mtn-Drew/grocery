@@ -15,7 +15,13 @@ const initialState = {
   storeLoading: true,
   historyLoading: true,
   showModal:false,
-  modal:''
+  modal:'',
+  modalName:'',
+  modalDescription:'',
+  modalAisle:'',
+  modalStore:'',
+  modalDate:'',
+  
 }
 
 // Create context
@@ -124,6 +130,13 @@ export const GlobalProvider = ({ children }) => {
     dispatch({
       type: 'TOGGLE_MODAL',
       payload: item,
+    })
+  }
+
+  function setNewModalName(name){
+    dispatch({
+      type: 'SET_NEW_MODAL_NAME',
+      payload: name,
     })
   }
 
@@ -256,7 +269,13 @@ export const GlobalProvider = ({ children }) => {
         // transactions: state.transactions,
         error: state.error,
         groceryLoading: state.groceryLoading,
-        showModal: state.showModal
+        showModal: state.showModal, 
+        modalName: state.modalName,
+        modalAisle: state.modalAisle,
+        modalDescription: state.modalDescription,
+        modalStore: state.modalStore,
+        modalDate: state.modalDate,
+        setNewModalName,
       }}
     >
       {children}
