@@ -2,7 +2,7 @@ const GroceryStore = require('../models/GroceryStore')
 
 //@desc Get all groceryStores
 //@route GET /api/v1/groceryStores
-//@access Public
+
 exports.getGroceryStores = async (req, res, next) => {
   try {
     const groceryStores = await GroceryStore.find()
@@ -22,7 +22,7 @@ exports.getGroceryStores = async (req, res, next) => {
 
 //@desc Add groceryStore
 //@route POST /api/v1/groceryStores
-//@access Public
+
 exports.addGroceryStore = async (req, res, next) => {
   try {
     const { storeName, description, location } = req.body
@@ -52,7 +52,7 @@ exports.addGroceryStore = async (req, res, next) => {
 
 //@desc Delete groceryStore
 //@route DELETE /api/v1/groceryStores:id
-//@access Public
+
 exports.deleteGroceryStore = async (req, res, next) => {
   try {
     const groceryStore = await GroceryStore.findById(req.params.id)

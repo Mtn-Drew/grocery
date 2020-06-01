@@ -2,7 +2,7 @@ const GroceryItem = require('../models/GroceryItem')
 
 //@desc Get all groceryItems
 //@route GET /api/v1/groceryItems
-//@access Public
+
 exports.getGroceryItems = async (req, res, next) => {
   try {
     const groceryItems = await GroceryItem.find()
@@ -22,7 +22,7 @@ exports.getGroceryItems = async (req, res, next) => {
 
 //@desc Add groceryItem
 //@route POST /api/v1/groceryItems
-//@access Public
+
 exports.addGroceryItem = async (req, res, next) => {
   try {
     const {
@@ -59,7 +59,7 @@ exports.addGroceryItem = async (req, res, next) => {
 
 //@desc Delete groceryItem
 //@route DELETE /api/v1/groceryItems:id
-//@access Public
+
 exports.deleteGroceryItem = async (req, res, next) => {
   try {
     const groceryItem = await GroceryItem.findById(req.params.id)
@@ -88,7 +88,7 @@ exports.deleteGroceryItem = async (req, res, next) => {
 
 //@desc Update groceryItem
 //@route PUT /api/v1/groceryItems:id
-//@access Public
+
 exports.updateGroceryItem = async (req, res, next) => {
   try {
     const groceryItem = await GroceryItem.findByIdAndUpdate(req.params.id, req.body,{new:true,useFindAndModify:false})

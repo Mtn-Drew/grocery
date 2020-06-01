@@ -2,7 +2,6 @@ const HistoryItem = require('../models/HistoryItem')
 
 //@desc Get all history items
 //@route GET /api/v1/historyItems
-//@access Public
 
 exports.getHistoryItems = async (req, res, next) => {
   try {
@@ -23,7 +22,6 @@ exports.getHistoryItems = async (req, res, next) => {
 
 //@desc Add history item
 //@route POST /api/v1/historyItems
-//@access Public
 
 exports.addItemToHistory = async (req, res, next) => {
   try {
@@ -60,7 +58,6 @@ exports.addItemToHistory = async (req, res, next) => {
 
 //@desc Delete history item
 //@route DELETE /api/v1/historyItems:id
-//@access Public
 
 exports.deleteItemFromHistory = async (req, res, next) => {
   try {
