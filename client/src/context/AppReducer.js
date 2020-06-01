@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default (state, action) => {
   switch (action.type) {
     case 'DELETE_ITEM_FROM_LIST':
@@ -22,7 +20,7 @@ export default (state, action) => {
       const tempArrUpdate = state.groceryItem.filter(
         (item) => item._id !== action.payload._id
       )
-      
+
       return {
         ...state,
         groceryItem: [...tempArrUpdate, action.payload],
@@ -69,23 +67,6 @@ export default (state, action) => {
         }
       }
 
-    // if (action.payload.itemName === undefined) {
-    //   return {
-    //     ...state,
-    //     showModal: flip,
-    //   }
-    // } else {
-    //   return {
-    //     ...state,
-    //     showModal: flip,
-    //     modalName: action.payload.itemName,
-    //     modalDescription: action.payload.description,
-    //     modalAisle: action.payload.aisle,
-    //     modalStore: action.payload.defaultStore,
-    //     modalId: action.payload._id,
-    //     // modalDate: action.payload.lastPurchased
-    //   }
-    // }
 
     case 'SET_NEW_MODAL_NAME':
       console.log('set new mod name - ', action.payload)
@@ -146,26 +127,7 @@ export default (state, action) => {
         historyItem: [...state.historyItem, action.payload],
       }
 
-    //transactions
-    case 'GET_TRANSACTIONS':
-      return {
-        ...state,
-        groceryLoading: false,
-        transactions: action.payload,
-      }
-    case 'DELETE_TRANSACTION':
-      return {
-        ...state,
-        transactions: state.transactions.filter(
-          (transaction) => transaction._id !== action.payload
-        ),
-      }
-    case 'ADD_TRANSACTION':
-      return {
-        ...state,
-        transactions: [...state.transactions, action.payload],
-      }
-    case 'TRANSACTION_ERROR':
+    case 'DATA_ERROR':
       return {
         ...state,
         error: action.payload,

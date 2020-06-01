@@ -6,17 +6,10 @@ import HistoryListItem from './HistoryListItem'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
-//by date, store or by item toggle?
-
 function HistoryList() {
   const [showList, setShowList] = useState(false)
   const [displayedList, setDisplayedList] = useState('')
   const { historyItem } = useContext(GlobalContext)
-
-  // useEffect(() => {
-  //   getHistoryItems()
-  //   console.log('historyItem----', historyItem)
-  // }, [])
 
   useEffect(() => {
     setDisplayedList([])

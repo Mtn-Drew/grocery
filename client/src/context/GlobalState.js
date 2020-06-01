@@ -2,26 +2,23 @@ import React, { createContext, useReducer } from 'react'
 import AppReducer from './AppReducer'
 import axios from 'axios'
 
-//alt store is set if user picks store other than default
-
 //Init state
 const initialState = {
   store: [],
   groceryItem: [],
   historyItem: [],
-  // transactions: [],
   error: null,
   groceryLoading: true,
   storeLoading: true,
   historyLoading: true,
-  showModal:false,
-  modal:'',
-  modalName:'',
-  modalDescription:'',
-  modalAisle:'',
-  modalStore:'',
-  modalDate:'',
-  modalId:'',
+  showModal: false,
+  modal: '',
+  modalName: '',
+  modalDescription: '',
+  modalAisle: '',
+  modalStore: '',
+  modalDate: '',
+  modalId: '',
 }
 
 // Create context
@@ -43,7 +40,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -59,7 +56,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -78,24 +75,21 @@ export const GlobalProvider = ({ children }) => {
       aisle: item.aisle,
       defaultStore: item.defaultStore,
       _id: item._id,
-     
     }
-    console.log('data beotch--> ',data)
+    console.log('data beotch--> ', data)
     try {
       await axios.put(`/api/v1/groceryItems/${data._id}`, data, config)
 
       dispatch({
         type: 'UPDATE_GROCERY_ITEM',
-        payload:item,
+        payload: item,
       })
-      
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
-    
   }
 
   async function addItemToList(item) {
@@ -114,14 +108,14 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
   }
 
   function toggleChecked(item) {
-    console.log('in toggle-- ',item)
+    console.log('in toggle-- ', item)
     dispatch({
       type: 'TOGGLE_CHECKED',
       payload: item,
@@ -136,7 +130,7 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
-  function setNewModalName(name){
+  function setNewModalName(name) {
     dispatch({
       type: 'SET_NEW_MODAL_NAME',
       payload: name,
@@ -153,7 +147,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -169,7 +163,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -191,7 +185,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -207,7 +201,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -223,7 +217,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -245,7 +239,7 @@ export const GlobalProvider = ({ children }) => {
       })
     } catch (error) {
       dispatch({
-        type: 'TRANSACTION_ERROR',
+        type: 'DATA_ERROR',
         payload: error.response.data.error,
       })
     }
@@ -268,11 +262,10 @@ export const GlobalProvider = ({ children }) => {
         addItemToHistory,
         deleteItemFromHistory,
         toggleModal,
-        modal:state.modal,
-        // transactions: state.transactions,
+        modal: state.modal,
         error: state.error,
         groceryLoading: state.groceryLoading,
-        showModal: state.showModal, 
+        showModal: state.showModal,
         modalName: state.modalName,
         modalAisle: state.modalAisle,
         modalDescription: state.modalDescription,

@@ -33,7 +33,6 @@ function GroceryList() {
       a.aisle > b.aisle ? 1 : -1
     )
 
- 
     const listByStore = (store) => {
       console.log('listbyStore-> ',store)
       console.log('sortedGroceries ', sortedGroceries)
