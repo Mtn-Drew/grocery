@@ -2,7 +2,7 @@ import React, { useContext, forwardRef } from 'react'
 import ReactDOM from 'react-dom'
 import { GlobalContext } from '../context/GlobalState'
 
-const Mod2 = forwardRef( (props, ref) => {
+const Modal = (props) => {
 
 const { toggleModal } = useContext(GlobalContext)
   
@@ -14,6 +14,6 @@ const { toggleModal } = useContext(GlobalContext)
   )
 
   return ReactDOM.createPortal(modal, document.querySelector('#modal'))
-})
+}
 
-export default Mod2
+export default Modal

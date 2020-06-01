@@ -3,7 +3,6 @@ import './App.css'
 
 import Header from './components/Header'
 import GroceryList from './components/GroceryList'
-import HistoryList from './components/HistoryList'
 import MakeGroceryList from './components/MakeGroceryList'
 import StoreList from './components/StoreList'
 import SubmitButtons from './components/SubmitButtons'
@@ -18,7 +17,6 @@ function App() {
         <SubmitButtons />
         <GroceryList />
         <MakeGroceryList />
-        <HistoryList />
         <StoreList />
       </div>
     </GlobalProvider>
