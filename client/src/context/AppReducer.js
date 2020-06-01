@@ -18,9 +18,16 @@ export default (state, action) => {
       }
 
     case 'UPDATE_GROCERY_ITEM':
+      console.log('update grocery item-- ', action.payload)
+      const tempArrUpdate = state.groceryItem.filter(
+        (item) => item._id !== action.payload._id
+      )
+      
       return {
         ...state,
-        groceryItem: [...state.groceryItem, action.payload],
+        groceryItem: [...tempArrUpdate, action.payload],
+
+        showModal: false,
       }
 
     case 'TOGGLE_CHECKED':
@@ -38,25 +45,53 @@ export default (state, action) => {
       }
 
     case 'TOGGLE_MODAL':
-      
       const flip = !state.showModal
-      console.log('reducer- action.payload -', action.payload)
-      return {
-        ...state,
-        showModal: flip,
-        modalName: action.payload.itemName,
-        modalDescription:action.payload.description,
-        modalAisle: action.payload.aisle,
-        modalStore: action.payload.defaultStore,
-        // modalDate: action.payload.lastPurchased
-        
+      console.log(
+        'reducer- action.payload -',
+        action.payload ? action.payload : 'und'
+      )
+
+      try {
+        return {
+          ...state,
+          showModal: flip,
+          modalName: action.payload.itemName,
+          modalDescription: action.payload.description,
+          modalAisle: action.payload.aisle,
+          modalStore: action.payload.defaultStore,
+          modalId: action.payload._id,
+          // modalDate: action.payload.lastPurchased
+        }
+      } catch (err) {
+        return {
+          ...state,
+          showModal: flip,
+        }
       }
 
-      case 'SET_NEW_MODAL_NAME':
-        console.log('set new mod name - ', action.payload)
+    // if (action.payload.itemName === undefined) {
+    //   return {
+    //     ...state,
+    //     showModal: flip,
+    //   }
+    // } else {
+    //   return {
+    //     ...state,
+    //     showModal: flip,
+    //     modalName: action.payload.itemName,
+    //     modalDescription: action.payload.description,
+    //     modalAisle: action.payload.aisle,
+    //     modalStore: action.payload.defaultStore,
+    //     modalId: action.payload._id,
+    //     // modalDate: action.payload.lastPurchased
+    //   }
+    // }
 
-      return{
-        modalName: action.payload
+    case 'SET_NEW_MODAL_NAME':
+      console.log('set new mod name - ', action.payload)
+
+      return {
+        modalName: action.payload,
       }
 
     case 'GET_GROCERIES':

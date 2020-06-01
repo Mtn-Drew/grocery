@@ -32,7 +32,8 @@ const GroceryItemSchema = new mongoose.Schema({
   },
   checked : {
     type:Boolean,
-  }
+  },
+  
 })
 
 module.exports = mongoose.model('GroceryItem', GroceryItemSchema)

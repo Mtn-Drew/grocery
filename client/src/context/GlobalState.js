@@ -21,7 +21,7 @@ const initialState = {
   modalAisle:'',
   modalStore:'',
   modalDate:'',
-  
+  modalId:'',
 }
 
 // Create context
@@ -66,7 +66,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function updateGroceryItem(item) {
-    console.log('in updateGroceryITem-', item)
+    console.log('in updateGroceryItem-', item)
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -77,10 +77,12 @@ export const GlobalProvider = ({ children }) => {
       description: item.description,
       aisle: item.aisle,
       defaultStore: item.defaultStore,
-      checked: item.checked
+      _id: item._id,
+     
     }
+    console.log('data beotch--> ',data)
     try {
-      await axios.put('/api/v1/groceryItems', data, config)
+      await axios.put(`/api/v1/groceryItems/${data._id}`, data, config)
 
       dispatch({
         type: 'UPDATE_GROCERY_ITEM',
@@ -93,6 +95,7 @@ export const GlobalProvider = ({ children }) => {
         payload: error.response.data.error,
       })
     }
+    
   }
 
   async function addItemToList(item) {
@@ -276,6 +279,8 @@ export const GlobalProvider = ({ children }) => {
         modalStore: state.modalStore,
         modalDate: state.modalDate,
         setNewModalName,
+        updateGroceryItem,
+        modalId: state.modalId,
       }}
     >
       {children}
