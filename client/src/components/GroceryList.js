@@ -28,14 +28,13 @@ function GroceryList() {
   }, [])
 
   useEffect(() => {
-    console.log('UE grocery Items-- ', groceryItem)
+   
     const sortedGroceries = groceryItem.sort((a, b) =>
       a.aisle > b.aisle ? 1 : -1
     )
 
     const listByStore = (store) => {
-      console.log('listbyStore-> ',store)
-      console.log('sortedGroceries ', sortedGroceries)
+
       const list = sortedGroceries.filter(
         (item) =>
           item.defaultStore.toUpperCase() === store.storeName.toUpperCase()

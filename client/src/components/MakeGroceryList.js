@@ -10,7 +10,7 @@ import 'react-slidedown/lib/slidedown.css'
 //when you click edit, you can change values for aisle, store, frequency
 
 function MakeList(props) {
-  const { addItemToList, store, updateGroceryItem, toggleModal, showModal } = useContext(GlobalContext)
+  const { addItemToList, store, updateGroceryItem, toggleModal } = useContext(GlobalContext)
   const [newItemName, setNewItemName] = useState('')
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
