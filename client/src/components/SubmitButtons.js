@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-function SubmitButtons() {
+import { RiCloudLine } from 'react-icons/ri'
+import {BsFillExclamationTriangleFill} from 'react-icons/bs'
 
+function SubmitButtons() {
   const { groceryItem, addItemToHistory, deleteItemFromList } = useContext(
     GlobalContext
   )
@@ -28,8 +30,12 @@ function SubmitButtons() {
 
   return (
     <div>
-      <button onClick={handleSubmit} className={'myButton'}>SUBMIT</button>
-      <button onClick={handleReset} className={'myButton'}>RESET</button>
+      <button onClick={handleSubmit} className={'myButton'}>
+        SUBMIT<RiCloudLine className={'up-down-icon'}/>
+      </button>
+      <button onClick={handleReset} className={'myButton'}>
+        RESET<BsFillExclamationTriangleFill className={'up-down-icon'}/>
+      </button>
     </div>
   )
 }

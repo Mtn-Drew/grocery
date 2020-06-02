@@ -4,6 +4,10 @@ import { GlobalContext } from '../context/GlobalState'
 import Loader from './Loader'
 import StoreListEntry from './StoreListEntry'
 import MakeStoreList from './MakeStoreList'
+
+import {FcCollapse, FcExpand} from 'react-icons/fc'
+import {FaPlus, FaMinus} from 'react-icons/fa'
+ import {RiDeleteBin6Line} from 'react-icons/ri'
 import SlideDown from 'react-slidedown'
 
 function StoreList() {
@@ -35,11 +39,11 @@ function StoreList() {
       <h3>
         store list
         <span onClick={() => setShowList(!showList)}>
-          {showList ? '   🔼' : '   🔽'}
+          {!showList ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
         </span>
         {showList ? (
           <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>
-            {showMakeStoreList ? '➖' : '➕'}
+            {showMakeStoreList ? <FaMinus className={'up-down-icon'}/> : <FaPlus className={'up-down-icon'}/>}
           </span>
         ) : null}
       </h3>

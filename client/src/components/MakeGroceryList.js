@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import SearchBar from './SearchBar'
 
+import {FcCollapse, FcExpand} from 'react-icons/fc'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
@@ -96,7 +97,7 @@ function MakeGroceryList(props) {
           <h3>
             Add item to list
             <span onClick={() => setShowForm(!showForm)}>
-              {showForm ? '   🔼' : '   🔽'}
+              {showForm ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
             </span>
           </h3>
           <SearchBar />

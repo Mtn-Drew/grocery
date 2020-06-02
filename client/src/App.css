@@ -65,6 +65,7 @@ input[type='number'] {
 }
 
 .myButton {
+  
 	box-shadow:inset 0px -3px 7px 0px #29bbff;
 	background:linear-gradient(to bottom, rgb(89, 86, 252) 5%, #0688fa 100%);
 	background-color:rgb(89, 86, 252);
@@ -79,6 +80,7 @@ input[type='number'] {
 	text-decoration:none;
   text-shadow:0px 1px 0px #263666;
   margin: 10px;
+  box-shadow: 2px 3px 5px 0px rgb(99, 98, 98);
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, rgb(89, 86, 252) 5%, #2dabf9 100%);
@@ -130,21 +132,21 @@ input[type='number'] {
 
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
+  background-color: #852116f8;
   border: 0;
   color: #fff;
 }
 
 .check-btn {
   cursor: pointer;
-  background-color: #33ca40;
+  background-color: #10996bf6;
   border: 0;
   color: #fff;
 }
 
 .loader {
   width: 100px;
-  color: red;
+  color: rgb(89, 86, 252);
   height: 100px;
 }
 @keyframes loader {
@@ -164,7 +166,7 @@ input[type='number'] {
   margin-top: -30px;
   margin-left: -30px;
   border-radius: 50%;
-  border-top: 2px solid coral;
+  border-top: 2px solid rgb(89, 86, 252);
   border-right: 2px solid transparent;
   animation: loader 0.7s linear infinite;
 }
@@ -205,4 +207,12 @@ input[type='number'] {
 
 .sorted-grocery-list-entry {
   z-index: 0;
+}
+
+.up-down-icon {
+  margin-left: 10px;
+}
+
+.check-delete-icon {
+  min-height: 24px;
 }

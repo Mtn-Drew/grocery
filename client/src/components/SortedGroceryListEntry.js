@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
+import {FiDelete, FiCheckSquare} from 'react-icons/fi'
+import {RiDeleteBin2Line} from 'react-icons/ri'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
@@ -40,7 +42,7 @@ function SortedGroceryListEntry(props) {
             _id={modalId}
             date={modalDate}
           />
-          <button onClick={toggleModal}>Cancel</button>
+          <button onClick={toggleModal} className={'myButton'}>Cancel</button>
         </Modal>
       ) : null}
       <h4>{props.name}</h4>
@@ -57,12 +59,12 @@ function SortedGroceryListEntry(props) {
                 style={{ textDecoration: '' }}
                 onClick={() => deleteItemFromList(item._id)}
               >
-                X
+                <RiDeleteBin2Line className={'check-delete-icon'}/>
               </button>
               <span onClick={() => toggleModal(item)}>{item.itemName}</span>{' '}
               <span onClick={() => toggleModal(item)}> {item.aisle} </span>
               <button className="check-btn" onClick={() => toggleChecked(item)}>
-                ✓
+                <FiCheckSquare/>
               </button>
             </li>
           ))}

@@ -4,6 +4,7 @@ import { GlobalContext } from '../context/GlobalState'
 import SortedGroceryListEntry from './SortedGroceryListEntry'
 import Loader from './Loader'
 
+import {FcCollapse, FcExpand} from 'react-icons/fc'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
@@ -61,7 +62,7 @@ function GroceryList() {
       <h3>
         grocery list
         <span onClick={() => setShowList(!showList)}>
-          {showList ? '   🔼' : '   🔽'}
+          {showList ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
         </span>
       </h3>
       <SlideDown>
