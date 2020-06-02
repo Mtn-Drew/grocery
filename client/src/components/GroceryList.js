@@ -8,7 +8,6 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function GroceryList() {
-
   const {
     store,
     getStores,
@@ -29,9 +28,24 @@ function GroceryList() {
   }, [])
 
   useEffect(() => {
-    const sortedGroceries = groceryItem.sort((a, b) =>
-      a.aisle > b.aisle ? 1 : -1
-    )
+
+    function sortByAisleThenName(a, b) {
+      let o1 = a.aisle
+      let o2 = b.aisle
+
+      let p1 = a.itemName
+      let p2 = b.itemName
+
+      if (o1 < o2) return -1
+      if (o1 > o2) return 1
+      if (p1 < p2) return -1
+      if (p1 > p2) return 1
+      return 0
+    }
+
+    const sortedGroceries = groceryItem.sort(sortByAisleThenName)
+
+    console.log('sortedGroceries ', sortedGroceries)
     const listByStore = (store) => {
       const list = sortedGroceries.filter(
         (item) =>
