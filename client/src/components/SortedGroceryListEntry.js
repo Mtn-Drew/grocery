@@ -59,6 +59,7 @@ function SortedGroceryListEntry(props) {
               </button>
               <span onClick={() => toggleModal(item)}>{item.itemName}</span>{' '}
               <span onClick={() => toggleModal(item)}> {item.aisle} </span>
+              
               <button className="check-btn" onClick={() => toggleChecked(item)}>
                 ✓
               </button>
@@ -69,5 +70,7 @@ function SortedGroceryListEntry(props) {
     </div>
   )
 }
+
+// SortedGroceryListEntry.whyDidYouRender = true
 
 export default SortedGroceryListEntry

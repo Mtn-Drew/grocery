@@ -31,7 +31,7 @@ export default (state, action) => {
     case 'TOGGLE_CHECKED':
       const tempArrChecked = state.groceryItem.map((item) => {
         if (item._id === action.payload._id) {
-          console.log('MATCH ', item.checked)
+          console.log('MATCH ', item)
           item.checked = !item.checked
           return item         
         } else {
@@ -136,3 +136,5 @@ export default (state, action) => {
       return state
   }
 }
+
+

@@ -174,4 +174,6 @@ function MakeList(props) {
   )
 }
 
+MakeList.whyDidYouRender = true
+
 export default MakeList

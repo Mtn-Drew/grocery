@@ -40,4 +40,6 @@ function SubmitButtons() {
   )
 }
 
+SubmitButtons.whyDidYouRender = true
+
 export default SubmitButtons
