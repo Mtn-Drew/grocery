@@ -30,16 +30,10 @@ function GroceryList() {
   useEffect(() => {
 
     function sortByAisleThenName(a, b) {
-      let o1 = a.aisle
-      let o2 = b.aisle
-
-      let p1 = a.itemName
-      let p2 = b.itemName
-
-      if (o1 < o2) return -1
-      if (o1 > o2) return 1
-      if (p1 < p2) return -1
-      if (p1 > p2) return 1
+      if (a.aisle < b.aisle) return -1
+      if (a.aisle > b.aisle) return 1
+      if (a.itemName < b.itemName) return -1
+      if (a.itemName > b.itemName) return 1
       return 0
     }
 
