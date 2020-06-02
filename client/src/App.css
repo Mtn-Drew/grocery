@@ -61,6 +61,32 @@ input[type='number'] {
   font-size: 16px;
   padding: 10px;
   width: 100%;
+  box-shadow: 2px 3px 5px 0px rgb(99, 98, 98);
+}
+
+.myButton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, rgb(89, 86, 252) 5%, #0688fa 100%);
+	background-color:rgb(89, 86, 252);
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:12px 53px;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #263666;
+  margin: 10px;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, rgb(89, 86, 252) 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
 }
 
 .btn {
@@ -74,6 +100,7 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  box-shadow: 2px 3px 5px 0px rgb(99, 98, 98);
 }
 
 .btn:focus,
@@ -98,6 +125,7 @@ input[type='number'] {
   position: relative;
   padding: 5px;
   margin: 10px 0;
+  box-shadow: 2px 3px 5px 0px rgb(99, 98, 98);
 }
 
 .delete-btn {
@@ -166,7 +194,7 @@ input[type='number'] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
+  min-height: 30%;
   width: 80%;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);

@@ -61,7 +61,7 @@ function GroceryList() {
       <h3>
         grocery list
         <span onClick={() => setShowList(!showList)}>
-          {showList ? '🔼' : '🔽'}
+          {showList ? '   🔼' : '   🔽'}
         </span>
       </h3>
       <SlideDown>

@@ -5,7 +5,7 @@ import SearchBar from './SearchBar'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
-function MakeList(props) {
+function MakeGroceryList(props) {
   const { addItemToList, store, updateGroceryItem, toggleModal } = useContext(
     GlobalContext
   )
@@ -13,7 +13,6 @@ function MakeList(props) {
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
   const [newItemStore, setNewItemStore] = useState('')
-  const [newItemLastPurchased, setNewItemLastPurchased] = useState('')
   const [updateItemId, setUpdateItemId] = useState('')
   const [showForm, setShowForm] = useState(true)
 
@@ -24,7 +23,6 @@ function MakeList(props) {
     setNewItemDescription('')
     setNewItemAisle('')
     setNewItemStore('')
-    setNewItemLastPurchased('')
     setUpdateItemId('')
   }
 
@@ -98,7 +96,7 @@ function MakeList(props) {
           <h3>
             Add item to list
             <span onClick={() => setShowForm(!showForm)}>
-              {showForm ? '🔼' : '🔽'}
+              {showForm ? '   🔼' : '   🔽'}
             </span>
           </h3>
           <SearchBar />
@@ -142,14 +140,6 @@ function MakeList(props) {
                 onChange={(e) => setNewItemStore(e.target.value)}
               />
             </div>
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="date last purchased"
-                value={newItemLastPurchased}
-                readOnly
-              />
-            </div>
             <button className="btn">
               {props.name ? 'Update Item' : 'Add To Grocery List'}
             </button>
@@ -160,6 +150,4 @@ function MakeList(props) {
   )
 }
 
-// MakeList.whyDidYouRender = true
-
-export default MakeList
+export default MakeGroceryList

@@ -35,7 +35,7 @@ function StoreList() {
       <h3>
         store list
         <span onClick={() => setShowList(!showList)}>
-          {showList ? '🔼' : '🔽'}
+          {showList ? '   🔼' : '   🔽'}
         </span>
         {showList ? (
           <span onClick={() => setShowMakeStoreList(!showMakeStoreList)}>

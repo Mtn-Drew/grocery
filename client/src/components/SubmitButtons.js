@@ -28,8 +28,8 @@ function SubmitButtons() {
 
   return (
     <div>
-      <button onClick={handleSubmit}>SUBMIT</button>
-      <button onClick={handleReset}>RESET</button>
+      <button onClick={handleSubmit} className={'myButton'}>SUBMIT</button>
+      <button onClick={handleReset} className={'myButton'}>RESET</button>
     </div>
   )
 }
