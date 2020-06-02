@@ -3,8 +3,6 @@ import { GlobalContext } from '../context/GlobalState'
 
 function StoreListEntry(props) {
 
-  console.log('StoreListEntry has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
-
   const { deleteStore } = useContext(GlobalContext)
   const [showDescription, setShowDescription] = useState(false)
 

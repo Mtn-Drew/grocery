@@ -8,8 +8,6 @@ import SlideDown from 'react-slidedown'
 
 function StoreList() {
 
-  console.log('StoreList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
-
   const { store, storeLoading } = useContext(GlobalContext)
   const [displayedList, setDisplayedList] = useState([])
   const [showMakeStoreList, setShowMakeStoreList] = useState(false)
@@ -17,7 +15,6 @@ function StoreList() {
 
   useEffect(() => {
     setDisplayedList([])
-
     store.map((s) => {
       const newListItem = (
         <li key={s._id}>

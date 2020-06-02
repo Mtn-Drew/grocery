@@ -1,5 +1,7 @@
 export default (state, action) => {
+
   switch (action.type) {
+
     case 'DELETE_ITEM_FROM_LIST':
       const tempArrDelete = state.groceryItem.filter(
         (item) => item._id !== action.payload
@@ -15,12 +17,10 @@ export default (state, action) => {
         groceryItem: [...state.groceryItem, action.payload],
       }
 
-    case 'UPDATE_GROCERY_ITEM':
-      console.log('update grocery item-- ', action.payload)
+    case 'UPDATE_GROCERY_ITEM':   
       const tempArrUpdate = state.groceryItem.filter(
         (item) => item._id !== action.payload._id
       )
-
       return {
         ...state,
         groceryItem: [...tempArrUpdate, action.payload],
@@ -30,24 +30,20 @@ export default (state, action) => {
 
     case 'TOGGLE_CHECKED':
       const tempArrChecked = state.groceryItem.map((item) => {
-        if (item._id === action.payload._id) {
-          console.log('MATCH ', item)
+        if (item._id === action.payload._id) {   
           item.checked = !item.checked
           return item         
         } else {
           return item
         }
-      })
-      console.log('tempArrChecked-> ', tempArrChecked)
-      return {
-        
+      })      
+      return {       
         ...state,
         groceryItem: tempArrChecked,
       }
 
     case 'TOGGLE_MODAL':
-      const flip = !state.showModal
-    
+      const flip = !state.showModal    
       try {
         return {
           ...state,
@@ -66,10 +62,7 @@ export default (state, action) => {
         }
       }
 
-
-    case 'SET_NEW_MODAL_NAME':
-      console.log('set new mod name - ', action.payload)
-
+    case 'SET_NEW_MODAL_NAME':      
       return {
         modalName: action.payload,
       }
@@ -88,8 +81,7 @@ export default (state, action) => {
         storeLoading: false,
       }
 
-    case 'ADD_STORE':
-      console.log('in add store -', action.payload)
+    case 'ADD_STORE':      
       return {
         ...state,
         store: [...state.store, action.payload],

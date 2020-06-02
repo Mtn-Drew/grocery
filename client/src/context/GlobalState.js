@@ -63,7 +63,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function updateGroceryItem(item) {
-    console.log('in updateGroceryItem-', item)
+  
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function toggleChecked(item) {
-    console.log('in toggle-- ', item)
+    
     dispatch({
       type: 'TOGGLE_CHECKED',
       payload: item,
@@ -123,7 +123,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function toggleModal(item) {
-    console.log('in toggleModal-- ', item)
+   
     dispatch({
       type: 'TOGGLE_MODAL',
       payload: item,

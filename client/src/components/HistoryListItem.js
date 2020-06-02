@@ -3,8 +3,6 @@ import { GlobalContext } from '../context/GlobalState'
 
 function HistoryListItem(props) {
 
-  console.log('HistoryListItem has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
-
   const { deleteItemFromHistory } = useContext(GlobalContext)
   const [showDescription, setShowDescription] = useState(false)
   const description = (
@@ -14,8 +12,6 @@ function HistoryListItem(props) {
       <li>{props.description}</li>
     </ul>
   )
-
-
 
   return (
     <div>

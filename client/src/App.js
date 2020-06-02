@@ -11,7 +11,7 @@ import { GlobalProvider } from './context/GlobalState'
 
 function App() {
 
-  console.log('App render -------------xxxxx------------xxxx----------')
+
 
   return (
     <GlobalProvider>

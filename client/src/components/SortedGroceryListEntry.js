@@ -7,10 +7,7 @@ import 'react-slidedown/lib/slidedown.css'
 import Modal from './Modal'
 import MakeGroceryList from './MakeGroceryList'
 
-
 function SortedGroceryListEntry(props) {
-
-  console.log('SortedGroceryListEntry has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
 
   const {
     toggleChecked,
@@ -28,21 +25,20 @@ function SortedGroceryListEntry(props) {
   const [newItemName, setNewItemName] = useState('')
   useEffect(() => {
     setNewItemName(`${modalName}`)
- }, [modalName])
-
+    console.log('this prevents requiring double click on checked after modal ', newItemName)
+  }, [modalName, newItemName])
 
   return (
     <div>
-     
       {showModal ? (
         <Modal>
-          <MakeGroceryList 
-          name={modalName}
-          description={modalDescription}
-          aisle={modalAisle}
-          store={modalStore}
-          _id={modalId}
-          date={modalDate}
+          <MakeGroceryList
+            name={modalName}
+            description={modalDescription}
+            aisle={modalAisle}
+            store={modalStore}
+            _id={modalId}
+            date={modalDate}
           />
           <button onClick={toggleModal}>Cancel</button>
         </Modal>
@@ -56,7 +52,7 @@ function SortedGroceryListEntry(props) {
               style={{ textDecoration: item.checked ? 'line-through' : '' }}
               className={'sorted-grocery-list-entry'}
             >
-                      <button
+              <button
                 className="delete-btn"
                 style={{ textDecoration: '' }}
                 onClick={() => deleteItemFromList(item._id)}
@@ -65,7 +61,6 @@ function SortedGroceryListEntry(props) {
               </button>
               <span onClick={() => toggleModal(item)}>{item.itemName}</span>{' '}
               <span onClick={() => toggleModal(item)}> {item.aisle} </span>
-              
               <button className="check-btn" onClick={() => toggleChecked(item)}>
                 ✓
               </button>
@@ -76,7 +71,5 @@ function SortedGroceryListEntry(props) {
     </div>
   )
 }
-
-// SortedGroceryListEntry.whyDidYouRender = true
 
 export default SortedGroceryListEntry

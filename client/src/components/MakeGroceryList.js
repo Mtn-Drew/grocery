@@ -5,11 +5,8 @@ import SearchBar from './SearchBar'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
-// under input, display the closest search result to what has been typed so far.  When you click on search result,  you select that item.  You can then click to add to list, or click edit
-//when found in search, it lists default values (aisle, store, frequency)
-//when you click edit, you can change values for aisle, store, frequency
-
 function MakeList(props) {
+
   const { addItemToList, store, updateGroceryItem, toggleModal } = useContext(GlobalContext)
   const [newItemName, setNewItemName] = useState('')
   const [newItemDescription, setNewItemDescription] = useState('')
@@ -31,8 +28,7 @@ function MakeList(props) {
   const getInitialValues = () => {
     if (props.name) {
       setNewItemName(props.name)
-      setUpdateItemId(props._id)
-      console.log('props--------', props)
+      setUpdateItemId(props._id)   
     }
     if(props.description){
       setNewItemDescription(props.description)
@@ -42,19 +38,17 @@ function MakeList(props) {
     }
     if (props.aisle) {
       setNewItemAisle(props.aisle)
-    }
-    
+    }   
   }
 
   useEffect(() => {
-    console.log('MakeGroceryList has rendered xxxxxxxxxxxxxx')
-    getInitialValues()
+       getInitialValues()
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const addToList = (e) => {
     e.preventDefault()
-    console.log('in addToList ')
+  
     const newItem = {
       itemName: newItemName.toLowerCase(),
       description: newItemDescription,
@@ -62,23 +56,19 @@ function MakeList(props) {
       defaultStore: newItemStore.toUpperCase().replace('\'',''),
     }
 
-    //check newItemStore against store values in context and set to 'any/other' if it doesn't match
-    //add option to add store??
     const testArr = store.filter((s) => s.storeName === newItem.defaultStore)
-    console.log('testArr ->', testArr)
-    console.log('defaultStore->', newItem.defaultStore)
+
     if (testArr.length === 0) {
       newItem.defaultStore = 'ANY/OTHER'
     }
 
-    console.log('newItem -> ', newItem)
     addItemToList(newItem)
     resetForm()
   }
 
   const updateItem = (e) =>{
     e.preventDefault()
-    console.log('in updateItem ')
+    
     const newItem = {
       itemName: newItemName.toLowerCase(),
       description: newItemDescription,
@@ -87,23 +77,16 @@ function MakeList(props) {
       _id:updateItemId,
     }
 
-    //check newItemStore against store values in context and set to 'any/other' if it doesn't match
-    //add option to add store??
     const testArr = store.filter((s) => s.storeName === newItem.defaultStore)
-    console.log('testArr ->', testArr)
-    console.log('defaultStore->', newItem.defaultStore)
+   
     if (testArr.length === 0) {
       newItem.defaultStore = 'ANY/OTHER'
     }
 
-    console.log('updateItem -> ', newItem)
     updateGroceryItem(newItem)
      toggleModal()
-    
-
   }
   
-
   return (
     <div>
       {props.name ? null : (
@@ -115,12 +98,10 @@ function MakeList(props) {
           {showForm ? '🔼' : '🔽'}
         </span>
       </h3>
-      
         <SearchBar />
         </>)}
         <SlideDown>
         {showForm ? (
-          
           <form onSubmit={props.name ? updateItem : addToList}>
             <div className="form-control">
               <label htmlFor="text">{props.name ? '':'Add New Item'}</label>
@@ -132,7 +113,6 @@ function MakeList(props) {
                 required
               />
             </div>
-
             <div className="form-control">
               <input
                 type="text"
@@ -165,7 +145,6 @@ function MakeList(props) {
                 readOnly
               />
             </div>
-
             <button className="btn">{props.name ? 'Update Item': 'Add To Grocery List' }</button>
           </form>
         ) : null}

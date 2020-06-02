@@ -8,6 +8,7 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function GroceryList() {
+
   const {
     store,
     getStores,
@@ -21,7 +22,6 @@ function GroceryList() {
   const [showList, setShowList] = useState(true)
 
   useEffect(() => {
-    console.log('GroceryList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
     getGroceryItems()
     getStores()
     getHistoryItems()
@@ -29,31 +29,25 @@ function GroceryList() {
   }, [])
 
   useEffect(() => {
-   
     const sortedGroceries = groceryItem.sort((a, b) =>
       a.aisle > b.aisle ? 1 : -1
     )
-
     const listByStore = (store) => {
-
       const list = sortedGroceries.filter(
         (item) =>
           item.defaultStore.toUpperCase() === store.storeName.toUpperCase()
       )
-
       if (list.length !== 0) {
         let newListItem = (
           <SortedGroceryListEntry
             name={store.storeName}
             list={list}
             key={store._id}
-
           />
         )
         setDisplayedList((prev) => [...prev, newListItem])
       }
     }
-
     setDisplayedList([])
     store.filter(listByStore)
   }, [groceryItem, store])

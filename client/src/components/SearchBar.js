@@ -6,11 +6,9 @@ import 'react-slidedown/lib/slidedown.css'
 
 function SearchBar() {
 
-  console.log('SearchBar has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
-
   const { historyItem, addItemToList } = useContext(GlobalContext)
+  
   const [query, setQuery] = useState('')
-
   const [displayResults, setDisplayResults] = useState([])
 
   const addToList = (item) => {
@@ -40,7 +38,6 @@ function SearchBar() {
         const sortedMatches = matches.sort((a, b) =>
           a.groceryItemName > b.groceryItemName ? 1 : -1
         )
-
         noDuplicateMatches = [matches[0]]
         for (let i = 1; i < matches.length; i++) {
           if (
@@ -54,7 +51,6 @@ function SearchBar() {
         //if fewer than 2 matches, just clone matches into noDuplicateMatches
         noDuplicateMatches = matches.map((x) => x)
       }
-
       const makeDisplay = noDuplicateMatches.map((item) => {
         return (
           <SlideDown key={item._id}>
@@ -69,7 +65,6 @@ function SearchBar() {
                   readOnly
                 />
               </div>
-
               <div className="form-control">
                 <input
                   type="text"
@@ -102,7 +97,6 @@ function SearchBar() {
                   readOnly
                 />
               </div>
-
               <button className="btn">Add To Grocery List</button>
             </form>
           </SlideDown>
@@ -110,10 +104,8 @@ function SearchBar() {
       })
       setDisplayResults(makeDisplay)
     }
-
     setQuery(e.target.value)
   }
-
   return (
     <div>
       <form>

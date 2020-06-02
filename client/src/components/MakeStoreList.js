@@ -1,13 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-// under input, display the closest search result to what has been typed so far.  When you click on search result,  you select that item.  You can then click to add to list, or click edit
-//when found in search, it lists default values (aisle, store, frequency)
-//when you click edit, you can change values for aisle, store, frequency
-
 function MakeStoreList() {
-
-  console.log('MakeStoreList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
 
   const { addStore } = useContext(GlobalContext)
   const [newStoreName, setNewStoreName] = useState('')
@@ -20,13 +14,10 @@ function MakeStoreList() {
 
   const addToList = (e) => {
     e.preventDefault()
-    console.log('in addToList ')
     const newStore = {
       storeName: newStoreName.toUpperCase(),
       description: newStoreDescription,
     }
-
-    console.log('newStore -> ', newStore)
     addStore(newStore)
     resetForm()
   }
@@ -45,7 +36,6 @@ function MakeStoreList() {
             required
           />
         </div>
-
         <div className="form-control">
           <input
             type="text"
@@ -54,7 +44,6 @@ function MakeStoreList() {
             onChange={(e) => setNewStoreDescription(e.target.value)}
           />
         </div>
-
         <button className="btn">Add To Store List</button>
       </form>
     </div>
