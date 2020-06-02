@@ -76,7 +76,7 @@ export const GlobalProvider = ({ children }) => {
       defaultStore: item.defaultStore,
       _id: item._id,
     }
-    console.log('data beotch--> ', data)
+   
     try {
       await axios.put(`/api/v1/groceryItems/${data._id}`, data, config)
 

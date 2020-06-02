@@ -77,7 +77,8 @@ input[type='number'] {
 }
 
 .btn:focus,
-.delete-btn:focus {
+.delete-btn:focus,
+.check-btn:focus {
   outline: 0;
 }
 

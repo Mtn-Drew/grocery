@@ -21,6 +21,7 @@ function GroceryList() {
   const [showList, setShowList] = useState(true)
 
   useEffect(() => {
+    console.log('GroceryList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
     getGroceryItems()
     getStores()
     getHistoryItems()

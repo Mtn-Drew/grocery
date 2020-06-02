@@ -24,7 +24,7 @@ function SortedGroceryListEntry(props) {
 
   return (
     <div>
-      {console.log('soredGrocerylist has rendered -----------------')}
+      {console.log('sortedGrocerylistEntry has rendered -----------------')}
       {showModal ? (
         <Modal>
           <MakeGroceryList 
