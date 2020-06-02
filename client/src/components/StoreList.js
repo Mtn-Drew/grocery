@@ -7,6 +7,9 @@ import MakeStoreList from './MakeStoreList'
 import SlideDown from 'react-slidedown'
 
 function StoreList() {
+
+  console.log('StoreList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const { store, storeLoading } = useContext(GlobalContext)
   const [displayedList, setDisplayedList] = useState([])
   const [showMakeStoreList, setShowMakeStoreList] = useState(false)

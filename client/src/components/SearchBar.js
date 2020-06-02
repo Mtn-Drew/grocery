@@ -5,6 +5,9 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function SearchBar() {
+
+  console.log('SearchBar has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const { historyItem, addItemToList } = useContext(GlobalContext)
   const [query, setQuery] = useState('')
 

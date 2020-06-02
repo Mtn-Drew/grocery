@@ -9,6 +9,9 @@ import MakeGroceryList from './MakeGroceryList'
 
 
 function SortedGroceryListEntry(props) {
+
+  console.log('SortedGroceryListEntry has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const {
     toggleChecked,
     deleteItemFromList,
@@ -24,7 +27,7 @@ function SortedGroceryListEntry(props) {
 
   return (
     <div>
-      {console.log('sortedGrocerylistEntry has rendered -----------------')}
+     
       {showModal ? (
         <Modal>
           <MakeGroceryList 

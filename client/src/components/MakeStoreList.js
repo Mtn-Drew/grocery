@@ -6,6 +6,9 @@ import { GlobalContext } from '../context/GlobalState'
 //when you click edit, you can change values for aisle, store, frequency
 
 function MakeStoreList() {
+
+  console.log('MakeStoreList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const { addStore } = useContext(GlobalContext)
   const [newStoreName, setNewStoreName] = useState('')
   const [newStoreDescription, setNewStoreDescription] = useState('')

@@ -5,6 +5,9 @@ import { GlobalContext } from '../context/GlobalState'
 //reset button clears the list
 
 function SubmitButtons() {
+
+  console.log('Submitbuttons has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const { groceryItem, addItemToHistory, deleteItemFromList } = useContext(
     GlobalContext
   )

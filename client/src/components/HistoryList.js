@@ -7,6 +7,9 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function HistoryList() {
+
+  console.log('HistoryList has rendered xxxxxxxxxxxxxxxxxxxxxxxx')
+
   const [showList, setShowList] = useState(false)
   const [displayedList, setDisplayedList] = useState('')
   const { historyItem } = useContext(GlobalContext)

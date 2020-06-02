@@ -10,6 +10,9 @@ import SubmitButtons from './components/SubmitButtons'
 import { GlobalProvider } from './context/GlobalState'
 
 function App() {
+
+  console.log('App render -------------xxxxx------------xxxx----------')
+
   return (
     <GlobalProvider>
       <div className="App">
