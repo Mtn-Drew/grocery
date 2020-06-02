@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
 import { SlideDown } from 'react-slidedown'
@@ -24,6 +24,12 @@ function SortedGroceryListEntry(props) {
     modalStore,
     modalId,
   } = useContext(GlobalContext)
+
+  const [newItemName, setNewItemName] = useState('')
+  useEffect(() => {
+    setNewItemName(`${modalName}`)
+ }, [modalName])
+
 
   return (
     <div>
