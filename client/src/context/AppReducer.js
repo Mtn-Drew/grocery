@@ -44,11 +44,7 @@ export default (state, action) => {
 
     case 'TOGGLE_MODAL':
       const flip = !state.showModal
-      console.log(
-        'reducer- action.payload -',
-        action.payload ? action.payload : 'und'
-      )
-
+    
       try {
         return {
           ...state,

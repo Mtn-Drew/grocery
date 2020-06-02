@@ -1,4 +1,4 @@
-import React, { useContext, forwardRef } from 'react'
+import React, { useContext} from 'react'
 import ReactDOM from 'react-dom'
 import { GlobalContext } from '../context/GlobalState'
 

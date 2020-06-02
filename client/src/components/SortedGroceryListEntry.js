@@ -7,6 +7,7 @@ import 'react-slidedown/lib/slidedown.css'
 import Modal from './Modal'
 import MakeGroceryList from './MakeGroceryList'
 
+
 function SortedGroceryListEntry(props) {
   const {
     toggleChecked,
@@ -23,7 +24,7 @@ function SortedGroceryListEntry(props) {
 
   return (
     <div>
-     
+      {console.log('soredGrocerylist has rendered -----------------')}
       {showModal ? (
         <Modal>
           <MakeGroceryList 

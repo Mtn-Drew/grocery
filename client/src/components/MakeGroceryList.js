@@ -47,6 +47,7 @@ function MakeList(props) {
   }
 
   useEffect(() => {
+    console.log('MakeGroceryList has rendered xxxxxxxxxxxxxx')
     getInitialValues()
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
