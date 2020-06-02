@@ -6,8 +6,9 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function MakeList(props) {
-
-  const { addItemToList, store, updateGroceryItem, toggleModal } = useContext(GlobalContext)
+  const { addItemToList, store, updateGroceryItem, toggleModal } = useContext(
+    GlobalContext
+  )
   const [newItemName, setNewItemName] = useState('')
   const [newItemDescription, setNewItemDescription] = useState('')
   const [newItemAisle, setNewItemAisle] = useState('')
@@ -28,32 +29,32 @@ function MakeList(props) {
   const getInitialValues = () => {
     if (props.name) {
       setNewItemName(props.name)
-      setUpdateItemId(props._id)   
+      setUpdateItemId(props._id)
     }
-    if(props.description){
+    if (props.description) {
       setNewItemDescription(props.description)
     }
-    if(props.store){
+    if (props.store) {
       setNewItemStore(props.store)
     }
     if (props.aisle) {
       setNewItemAisle(props.aisle)
-    }   
+    }
   }
 
   useEffect(() => {
-       getInitialValues()
+    getInitialValues()
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const addToList = (e) => {
     e.preventDefault()
-  
+
     const newItem = {
       itemName: newItemName.toLowerCase(),
       description: newItemDescription,
       aisle: newItemAisle.toLowerCase(),
-      defaultStore: newItemStore.toUpperCase().replace('\'',''),
+      defaultStore: newItemStore.toUpperCase().replace("'", ''),
     }
 
     const testArr = store.filter((s) => s.storeName === newItem.defaultStore)
@@ -66,45 +67,45 @@ function MakeList(props) {
     resetForm()
   }
 
-  const updateItem = (e) =>{
+  const updateItem = (e) => {
     e.preventDefault()
-    
+
     const newItem = {
       itemName: newItemName.toLowerCase(),
       description: newItemDescription,
       aisle: newItemAisle.toLowerCase(),
-      defaultStore: newItemStore.toUpperCase().replace('\'',''),
-      _id:updateItemId,
+      defaultStore: newItemStore.toUpperCase().replace("'", ''),
+      _id: updateItemId,
     }
 
     const testArr = store.filter((s) => s.storeName === newItem.defaultStore)
-   
+
     if (testArr.length === 0) {
       newItem.defaultStore = 'ANY/OTHER'
     }
 
     updateGroceryItem(newItem)
-     toggleModal()
+    toggleModal()
   }
-  
+
   return (
     <div>
       {props.name ? null : (
-      
-      <>
-      <h3>
-        Add item to list
-        <span onClick={() => setShowForm(!showForm)}>
-          {showForm ? '🔼' : '🔽'}
-        </span>
-      </h3>
-        <SearchBar />
-        </>)}
-        <SlideDown>
+        <>
+          <h3>
+            Add item to list
+            <span onClick={() => setShowForm(!showForm)}>
+              {showForm ? '🔼' : '🔽'}
+            </span>
+          </h3>
+          <SearchBar />
+        </>
+      )}
+      <SlideDown>
         {showForm ? (
           <form onSubmit={props.name ? updateItem : addToList}>
             <div className="form-control">
-              <label htmlFor="text">{props.name ? '':'Add New Item'}</label>
+              <label htmlFor="text">{props.name ? '' : 'Add New Item'}</label>
               <input
                 type="text"
                 placeholder="grocery item name"
@@ -145,7 +146,9 @@ function MakeList(props) {
                 readOnly
               />
             </div>
-            <button className="btn">{props.name ? 'Update Item': 'Add To Grocery List' }</button>
+            <button className="btn">
+              {props.name ? 'Update Item' : 'Add To Grocery List'}
+            </button>
           </form>
         ) : null}
       </SlideDown>

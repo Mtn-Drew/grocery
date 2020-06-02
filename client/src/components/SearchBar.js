@@ -14,12 +14,15 @@ function SearchBar() {
   const addToList = (item) => {
     return (event) => {
       event.preventDefault()
+      
       const newItem = {
         itemName: item.groceryItemName,
         description: item.groceryItemDescription,
         aisle: item.groceryItemAisle,
         defaultStore: item.storeName,
       }
+      setQuery('')
+      setDisplayResults([])
       addItemToList(newItem)
     }
   }
