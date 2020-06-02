@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import SearchBar from './SearchBar'
 
@@ -16,6 +16,8 @@ function MakeList(props) {
   const [newItemLastPurchased, setNewItemLastPurchased] = useState('')
   const [updateItemId, setUpdateItemId] = useState('')
   const [showForm, setShowForm] = useState(true)
+
+  const itemInput = useRef(null)
 
   const resetForm = () => {
     setNewItemName('')
@@ -65,6 +67,7 @@ function MakeList(props) {
 
     addItemToList(newItem)
     resetForm()
+    itemInput.current.focus()
   }
 
   const updateItem = (e) => {
@@ -112,6 +115,7 @@ function MakeList(props) {
                 value={newItemName}
                 onChange={(e) => setNewItemName(e.target.value)}
                 required
+                ref={itemInput}
               />
             </div>
             <div className="form-control">

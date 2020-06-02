@@ -28,7 +28,6 @@ function GroceryList() {
   }, [])
 
   useEffect(() => {
-
     function sortByAisleThenName(a, b) {
       if (a.aisle < b.aisle) return -1
       if (a.aisle > b.aisle) return 1
@@ -36,10 +35,7 @@ function GroceryList() {
       if (a.itemName > b.itemName) return 1
       return 0
     }
-
     const sortedGroceries = groceryItem.sort(sortByAisleThenName)
-
-    console.log('sortedGroceries ', sortedGroceries)
     const listByStore = (store) => {
       const list = sortedGroceries.filter(
         (item) =>
