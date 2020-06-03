@@ -24,11 +24,11 @@ function SortedGroceryListEntry(props) {
     modalId,
   } = useContext(GlobalContext)
 
-  const [newItemName, setNewItemName] = useState('')
-  useEffect(() => {
-    setNewItemName(`${modalName}`)
-    console.log('this prevents requiring double click on checked after modal ', newItemName)
-  }, [modalName, newItemName])
+  // const [newItemName, setNewItemName] = useState('')
+  // useEffect(() => {
+  //   setNewItemName(`${modalName}`)
+  //   console.log('this prevents requiring double click on checked after modal ', newItemName)
+  // }, [modalName, newItemName])
 
   return (
     <div>
