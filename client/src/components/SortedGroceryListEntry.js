@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-import {FiDelete, FiCheckSquare} from 'react-icons/fi'
+import { FiCheckSquare} from 'react-icons/fi'
 import {RiDeleteBin2Line} from 'react-icons/ri'
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'

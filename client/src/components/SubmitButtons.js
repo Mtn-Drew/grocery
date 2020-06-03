@@ -29,7 +29,7 @@ function SubmitButtons() {
   }
 
   return (
-    <div>
+    <div className={'submit-buttons'}>
       <button onClick={handleSubmit} className={'myButton'}>
         SUBMIT<RiCloudLine className={'up-down-icon'}/>
       </button>

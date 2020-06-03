@@ -7,7 +7,6 @@ import MakeStoreList from './MakeStoreList'
 
 import {FcCollapse, FcExpand} from 'react-icons/fc'
 import {FaPlus, FaMinus} from 'react-icons/fa'
- import {RiDeleteBin6Line} from 'react-icons/ri'
 import SlideDown from 'react-slidedown'
 
 function StoreList() {
