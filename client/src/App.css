@@ -17,6 +17,7 @@ body {
   background-image: url(./26445.jpg);
   background-position: center; 
   background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
