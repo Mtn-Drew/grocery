@@ -109,37 +109,41 @@ function MakeGroceryList(props) {
             <div className="form-control">
               <label htmlFor="text">{props.name ? '' : 'Add New Item'}</label>
               <input
+                id="grocery-item-name"
                 type="text"
-                placeholder="grocery item name"
+                placeholder="Enter item name"
                 value={newItemName}
                 onChange={(e) => setNewItemName(e.target.value)}
                 required
                 ref={itemInput}
-              />
+              /> <label htmlFor="grocery-item-name">Grocery Item Name</label>
             </div>
             <div className="form-control">
               <input
+                id="description"
                 type="text"
-                placeholder="description"
+                placeholder="Enter description"
                 value={newItemDescription}
                 onChange={(e) => setNewItemDescription(e.target.value)}
-              />
+              /> <label htmlFor="description">Description (Optional)</label>
             </div>
             <div className="form-control">
               <input
+                id="aisle"
                 type="text"
-                placeholder="aisle"
+                placeholder="Enter aisle"
                 value={newItemAisle}
                 onChange={(e) => setNewItemAisle(e.target.value)}
-              />
+              /> <label htmlFor="aisle">Aisle (Optional)</label>
             </div>
             <div className="form-control">
               <input
+                id="store"
                 type="text"
-                placeholder="store"
+                placeholder="Enter store name"
                 value={newItemStore}
                 onChange={(e) => setNewItemStore(e.target.value)}
-              />
+              /> <label htmlFor="store">Store (Optional)</label>
             </div>
             <button className="btn">
               {props.name ? 'Update Item' : 'Add To Grocery List'}

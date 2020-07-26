@@ -5,16 +5,15 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 function SearchBar() {
-
   const { historyItem, addItemToList } = useContext(GlobalContext)
-  
+
   const [query, setQuery] = useState('')
   const [displayResults, setDisplayResults] = useState([])
 
   const addToList = (item) => {
     return (event) => {
       event.preventDefault()
-      
+
       const newItem = {
         itemName: item.groceryItemName,
         description: item.groceryItemDescription,
@@ -61,23 +60,27 @@ function SearchBar() {
               <div className="form-control">
                 <label htmlFor="add-item-form">Add New Item</label>
                 <input
+                  
                   type="text"
                   placeholder="grocery item name"
                   value={item.groceryItemName}
                   name="groceryName"
                   readOnly
                 />
+                
               </div>
               <div className="form-control">
                 <input
+                  
                   type="text"
-                  placeholder="description"
+                  placeholder="optional description"
                   value={item.groceryItemDescription}
                   readOnly
-                />
+                /> 
               </div>
               <div className="form-control">
                 <input
+                  
                   type="text"
                   placeholder="aisle"
                   value={item.groceryItemAisle}
@@ -112,13 +115,14 @@ function SearchBar() {
   return (
     <div>
       <form>
-        <label>
+        <label htmlFor="search-bar">Search</label>
         <input
+          id="search-bar"
           type="text"
-          placeholder="Search"
+          placeholder="Enter search term"
           value={query}
           onChange={handleChange}
-        /></label>{' '}
+        />{' '}
       </form>
       {displayResults}
     </div>

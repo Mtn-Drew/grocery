@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
 import { FiCheckSquare} from 'react-icons/fi'
@@ -23,12 +23,6 @@ function SortedGroceryListEntry(props) {
     modalStore,
     modalId,
   } = useContext(GlobalContext)
-
-  // const [newItemName, setNewItemName] = useState('')
-  // useEffect(() => {
-  //   setNewItemName(`${modalName}`)
-  //   console.log('this prevents requiring double click on checked after modal ', newItemName)
-  // }, [modalName, newItemName])
 
   return (
     <div>
