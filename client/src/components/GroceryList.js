@@ -59,12 +59,12 @@ function GroceryList() {
 
   return (
     <div className="container">
-      <h3>
+      <h2>
         grocery list
         <span onClick={() => setShowList(!showList)}>
           {showList ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
         </span>
-      </h3>
+      </h2>
       <SlideDown>
         {showList ? groceryLoading ? <Loader /> : displayedList : null}
       </SlideDown>

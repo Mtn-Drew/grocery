@@ -24,7 +24,7 @@ function MakeStoreList() {
 
   return (
     <div>
-      <h3>Add Store</h3>
+      <h2>Add Store</h2>
       <form onSubmit={addToList}>
         <div className="form-control">
           <label htmlFor="text">Search or Add New Store</label>

@@ -94,12 +94,12 @@ function MakeGroceryList(props) {
     <div>
       {props.name ? null : (
         <>
-          <h3>
+          <h2>
             Add item to list
             <span onClick={() => setShowForm(!showForm)}>
               {showForm ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
             </span>
-          </h3>
+          </h2>
           <SearchBar />
         </>
       )}

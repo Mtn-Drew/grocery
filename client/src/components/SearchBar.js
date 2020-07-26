@@ -56,10 +56,10 @@ function SearchBar() {
       }
       const makeDisplay = noDuplicateMatches.map((item) => {
         return (
-          <SlideDown key={item._id}>
+          <SlideDown key={item._id} id="add-item-form">
             <form onSubmit={addToList(item)}>
               <div className="form-control">
-                <label htmlFor="text">Add New Item</label>
+                <label htmlFor="add-item-form">Add New Item</label>
                 <input
                   type="text"
                   placeholder="grocery item name"
@@ -112,12 +112,13 @@ function SearchBar() {
   return (
     <div>
       <form>
+        <label>
         <input
           type="text"
           placeholder="Search"
           value={query}
           onChange={handleChange}
-        />{' '}
+        /></label>{' '}
       </form>
       {displayResults}
     </div>

@@ -35,7 +35,7 @@ function StoreList() {
 
   return (
     <div>
-      <h3>
+      <h2>
         store list
         <span onClick={() => setShowList(!showList)}>
           {!showList ? <FcExpand className={'up-down-icon'}/> : <FcCollapse className={'up-down-icon'}/>}
@@ -45,7 +45,7 @@ function StoreList() {
             {showMakeStoreList ? <FaMinus className={'up-down-icon'}/> : <FaPlus className={'up-down-icon'}/>}
           </span>
         ) : null}
-      </h3>
+      </h2>
       <SlideDown>
         {showMakeStoreList && showList ? <MakeStoreList /> : null}
         {showList ? (

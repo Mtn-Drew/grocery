@@ -45,7 +45,7 @@ function SortedGroceryListEntry(props) {
           <button onClick={toggleModal} className={'myButton'}>Cancel</button>
         </Modal>
       ) : null}
-      <h4>{props.name}</h4>
+      <h3>{props.name}</h3>
       <ul className="list">
         <SlideDown>
           {props.list.map((item) => (

@@ -36,12 +36,12 @@ function HistoryList() {
 
   return (
     <div>
-      <h3>
+      <h2>
         history list
         <span onClick={() => setShowList(!showList)}>
           {showList ? '🔼' : '🔽'}
         </span>
-      </h3>
+      </h2>
       <SlideDown>
         {showList ? (
           <ul className="list">
